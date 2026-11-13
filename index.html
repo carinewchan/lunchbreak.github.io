@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2456c8">
+<title>Federal School Lunch Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Graduate&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Federal School Lunch Audit: a Digital Humanities project on how federal school lunch funding reaches states and why it differs — narrative, timeline, data, critique, methodology, and bibliography.">
+<style>
+:root{
+  --ink:#17212e; --muted:#4a5668; --paper:#f7f8fa; --white:#fff; --tint:#e9eef4;
+  --line:#c9d3df; --rule:#7d8ca1; --navy:#1b365d; --deep:#11233f; --focus:#0b5fd0;
+  --sage:#27994B; --ochre:#FFC61A; --red:#b3271e; --pink:#c2185b; --royal:#2456c8; --cork:#AC743F; --paper2:#faf3e3;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;background:var(--paper2);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);color:var(--deep);font-weight:600;margin:0;line-height:1.15}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.015em;max-width:18ch}
+h2{font-size:1.65rem;margin-bottom:1rem}
+h3{font-size:1.2rem;margin-bottom:.4rem}
+p{margin:0 0 1rem;max-width:68ch}
+a{color:var(--navy);text-underline-offset:.2em}
+a:hover{color:var(--deep);text-decoration-thickness:2px}
+.wrap{width:min(1120px,100% - 3rem);margin-inline:auto}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:1rem;top:-5rem;background:var(--deep);color:#fff;padding:.7rem 1rem;z-index:30;border-radius:2px}
+.skip:focus{top:1rem}
+
+header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem 2rem;flex-wrap:wrap;padding:.9rem 0}
+.brand{display:flex;gap:.8rem;align-items:center;text-decoration:none;color:var(--deep)}
+
+.brand b{font:600 1.15rem/1.1 var(--serif);display:block}
+.brand small{display:block;font-size:.82rem;color:var(--muted)}
+nav ul{list-style:none;display:flex;gap:1.6rem;margin:0;padding:0;flex-wrap:wrap}
+nav a{display:block;padding:.4rem 0;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:3px solid transparent}
+nav a:hover{border-bottom-color:var(--rule)}
+nav a[aria-current="page"]{border-bottom-color:var(--navy);color:var(--deep);font-weight:600}
+
+.view{display:none;padding:3.5rem 0 5rem}
+.view.on{display:block}
+.view:focus{outline:none}
+.label{font-weight:600;color:var(--navy);margin-bottom:.75rem;font-size:.95rem}
+.lede{font-size:1.2rem;color:var(--muted);margin-top:1.25rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;background:var(--navy);color:#fff;border:2px solid var(--navy);border-radius:2px;font:600 1rem var(--sans);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--deep);border-color:var(--deep);color:#fff}
+.btn.alt{background:transparent;color:var(--navy)}
+.btn.alt:hover{background:var(--tint);color:var(--deep)}
+.row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem;align-items:center}
+.sec{border-top:2px solid var(--navy);padding-top:1.5rem;margin-top:3.5rem}
+.sec>h2{margin-bottom:.5rem}
+.sec>.intro{color:var(--muted)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:4rem;align-items:center}
+.photo{margin:0}.photo img{display:block;width:100%;height:auto;background:var(--tint)}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.jump{display:flex;gap:.4rem 1.6rem;flex-wrap:wrap;margin-top:2.5rem;padding:.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.98rem}
+.jump span{font-weight:600;color:var(--deep)}
+
+.ledger{border-top:1px solid var(--rule);margin:1rem 0 0;padding:0;list-style:none}
+.ledger>li{display:grid;grid-template-columns:14rem 1fr 11rem;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.ledger b{font-family:var(--serif);font-size:1.15rem;color:var(--deep);font-weight:600}
+.ledger span{color:var(--muted)}
+.ledger em{font-style:normal;font-size:.92rem;color:var(--navy);font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:1rem}
+.cols>div{padding:0 1.75rem;border-left:1px solid var(--rule)}
+.cols>div:first-child{padding-left:0;border-left:0}
+.cols p{color:var(--muted);font-size:1rem}
+.steps{counter-reset:s;list-style:none;padding:0;margin:1rem 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem}
+.steps li{counter-increment:s;border-top:3px solid var(--navy);padding-top:.75rem;color:var(--muted);font-size:.98rem}
+.steps li::before{content:"Step " counter(s);display:block;font-weight:600;color:var(--navy);font-size:.9rem;margin-bottom:.2rem}
+.steps b{display:block;color:var(--ink);font-family:var(--serif);font-size:1.1rem}
+
+.figs{display:grid;grid-template-columns:1.15fr 1fr;gap:3rem;margin-top:1.5rem;align-items:start}
+figure{margin:0}
+figcaption{font-size:.92rem;color:var(--muted);margin-top:.6rem;border-top:1px solid var(--line);padding-top:.5rem}
+.chart{background:var(--white);border:1px solid var(--line);padding:1rem}
+.chart svg{width:100%;height:auto;display:block}
+.tile text{font:600 11px var(--sans)}
+.legend{display:flex;gap:.35rem;align-items:center;flex-wrap:wrap;font-size:.88rem;color:var(--muted);margin-top:.75rem}
+.legend i{width:26px;height:12px;display:inline-block;border:1px solid var(--rule)}
+.status{display:inline-block;font-weight:600;font-size:.9rem;color:var(--navy);border-left:4px solid var(--ochre);padding:.1rem .6rem;background:var(--tint)}
+.tablewrap{overflow-x:auto;margin-top:1rem}
+table{border-collapse:collapse;width:100%;min-width:640px;background:var(--white)}
+caption{text-align:left;font:600 1.15rem var(--serif);padding-bottom:.6rem;color:var(--deep)}
+th,td{text-align:left;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
+thead th{background:var(--tint);border-top:2px solid var(--navy);color:var(--deep);font-size:.95rem}
+td{color:var(--muted)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+dl.defs{display:grid;grid-template-columns:13rem 1fr;gap:.9rem 2rem;margin:1rem 0 0;border-top:1px solid var(--rule);padding-top:1rem}
+dl.defs dt{font:600 1.05rem var(--serif);color:var(--deep)}
+dl.defs dd{margin:0;color:var(--muted)}
+.note{border-left:4px solid var(--ochre);background:var(--tint);padding:1rem 1.25rem;max-width:72ch;color:var(--ink);margin-top:2rem}
+footer.site{border-top:1px solid var(--line);background:var(--white);padding:1.75rem 0;font-size:.92rem;color:var(--muted)}
+footer.site .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* tray navigation */
+.tray{position:relative;margin:0}
+.tray img{display:block;width:100%;height:auto}
+.hot{position:absolute;display:block;border:3px solid transparent;text-decoration:none;z-index:2}
+.hot.back{z-index:1}.hot.top{z-index:3}
+.hot span{position:absolute;left:6px;bottom:6px;background:var(--deep);color:#fff;font:600 .9rem/1.2 var(--sans);padding:.3rem .55rem;border-radius:2px;white-space:nowrap}
+.hot:hover,.hot:focus-visible{border-color:#fff;background:rgba(255,255,255,.2);outline:3px solid var(--focus);outline-offset:0}
+.hot:hover span,.hot:focus-visible span{background:var(--focus)}
+.tcap{font-size:.92rem;color:var(--muted);margin:.6rem 0 0;border-top:1px solid var(--line);padding-top:.5rem}
+
+/* timeline: records banners */
+.gym{background:#dfe6ee;border:1px solid var(--line);padding:0 1.5rem 1.5rem;margin-top:2.5rem}
+.rail{height:16px;background:#5d6d84;margin:0 -1.5rem}
+.banners{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0 2rem;margin:0;padding:0}
+.banners li{position:relative;padding-top:30px;margin-bottom:.5rem}
+.banners li::before,.banners li::after{content:"";position:absolute;top:0;width:4px;height:30px;background:#5d6d84}
+.banners li::before{left:16%}.banners li::after{right:16%}
+.bn{background:var(--navy);color:#fff;padding:1.1rem 1.25rem 3.6rem;border-top:10px solid #e3b95c;clip-path:polygon(0 0,100% 0,100% 100%,50% 91%,0 100%)}
+.bn.g{background:#2f4f3f}
+.bn time{display:block;font:600 2.6rem/1 var(--serif);color:#e3b95c}
+.bn h3{color:#fff;font-size:1.15rem;margin:.55rem 0 .4rem}
+.bn p{color:#ffffff;font-size:.95rem;margin:0}
+.bn.open{background:#f1f4f8;color:var(--muted);border-top-color:var(--rule);outline:2px dashed var(--rule);outline-offset:-8px}
+.bn.open time{color:var(--deep)}.bn.open h3{color:var(--deep)}.bn.open p{color:var(--muted)}
+.ex{display:inline-block;background:#fff;color:var(--deep);font:700 .7rem var(--sans);letter-spacing:.08em;padding:.1rem .45rem;border-radius:2px;margin-bottom:.4rem}
+.bsrc{font-size:.9rem;color:var(--ink);margin:.4rem 0 1.4rem;max-width:none}
+
+/* lockers */
+.wall{background:repeating-linear-gradient(90deg,#d4dce6 0 118px,#aebbcb 118px 120px);padding:1.5rem 1.5rem 0;margin-top:2rem;border-top:8px solid #6c7c92;border-bottom:8px solid #6c7c92}
+.wall h2{background:var(--paper);display:inline-block;padding:.35rem .8rem;margin:1rem 0 1rem;font-size:1.3rem;border:1px solid var(--rule)}
+.lockers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;perspective:1400px;margin:0 0 1.5rem}
+.lk{position:relative;min-height:20rem;background:#f1f4f8;border:4px solid #14263f}
+.in{position:absolute;inset:0;padding:1.1rem;visibility:hidden;overflow:auto;color:var(--ink)}
+.lk.open .in{visibility:visible}
+.in h3{font-size:1.2rem}.in p{font-size:.98rem;color:var(--muted)}
+.in .tag{display:inline-block;font-weight:600;font-size:.88rem;color:var(--navy);border-left:4px solid var(--ochre);background:var(--tint);padding:.1rem .6rem;margin-bottom:.6rem}
+.in .close{margin-top:.5rem;padding:.55rem 1rem;font-size:.95rem}
+.shelf{border-top:10px solid #8fa1b8;box-shadow:0 3px 0 #5d6d84;padding:.7rem .2rem .9rem;margin:0 0 .4rem}
+.shelf:first-of-type{border-top:0;box-shadow:none;padding-top:0}
+.shelf h3{font-size:1.08rem;margin:.25rem 0 .3rem}
+.shelf .stag{display:inline-block;font:700 .72rem var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--deep);background:#FFC61A;border:1px solid var(--ink);padding:.08rem .45rem;border-radius:2px}
+.lk.tall{min-height:36rem}
+.door{position:absolute;inset:0;width:100%;height:100%;border:0;margin:0;background:#2c4a73;color:#fff;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:1.2rem 1.1rem 1.1rem;text-align:left;font:inherit;transform-origin:left center;transition:transform .55s ease,visibility 0s;border-right:6px solid #1b3252}
+.lk.open .door{transform:rotateY(-108deg);visibility:hidden;transition:transform .55s ease,visibility 0s .55s}
+.door .vent{display:block;width:62%;height:36px;background:repeating-linear-gradient(#14263f 0 5px,transparent 5px 11px)}
+.door .no{display:inline-block;background:#e9eef4;color:var(--deep);font-weight:600;font-size:.88rem;padding:.15rem .55rem;border-radius:2px;margin-bottom:.5rem}
+.door .nm{display:block;font:600 1.3rem/1.2 var(--serif);max-width:80%}
+.door .hint{display:block;color:#ffffff;font-size:.92rem;margin-top:.5rem}
+.door::after{content:"";position:absolute;right:14px;top:46%;width:9px;height:64px;background:#c9d3df;border:1px solid #14263f}
+.door:hover{background:#355685}
+.lkctl{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+
+.callout{background:var(--tint);border-left:4px solid var(--royal);padding:.5rem .7rem;font-size:.9rem;color:var(--ink);margin:.5rem 0 0}
+.badge{display:inline-block;font:700 .7rem var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:.12rem .5rem;border:1.5px solid var(--ink);border-radius:2px;background:#FFC61A;color:var(--ink);margin-bottom:.35rem}
+.stickies>div{background:#fff6bf;border:1px solid var(--ink);box-shadow:4px 4px 0 rgba(0,0,0,.25);padding:1.1rem 1.2rem!important;border-left:1px solid var(--ink)!important;transform:rotate(-.6deg)}
+.stickies>div:nth-child(2){background:#dff0e4;transform:rotate(.5deg)}
+.stickies>div:nth-child(3){background:#d9e8ff;transform:rotate(-.4deg)}
+html.calm .stickies>div{transform:none!important}
+.bn{cursor:pointer}
+.bn:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+#banner-detail{background:#fff;border:3px solid var(--ink);box-shadow:5px 6px 0 var(--ink);padding:1.5rem;margin-top:1.5rem}
+#banner-detail h3{margin-bottom:.5rem}
+
+/* sources menu */
+.menu{background:#fbf7ec;border:4px double var(--navy);max-width:780px;margin-top:2.5rem;padding:2.25rem 2.5rem 2.5rem;color:var(--ink)}
+.menu .mh{text-align:center;border-bottom:2px solid var(--navy);padding-bottom:1.1rem;margin-bottom:.5rem}
+.menu .mh h2{font-size:2.1rem;margin:0}
+.menu .mh p{margin:.4rem auto 0;color:var(--muted)}
+.menu h3{text-align:center;font-size:1.15rem;color:var(--navy);margin:1.9rem 0 .6rem}
+.dish{display:flex;align-items:baseline;gap:.6rem;margin:1rem 0 .1rem}
+.dish a,.dish b{font-weight:600;font-size:1.05rem}
+.dish i{flex:1;border-bottom:2px dotted #7d8ca1;min-width:.75rem;transform:translateY(-.3em)}
+.dish span{color:var(--muted);white-space:nowrap;font-size:.95rem}
+.menu .desc{margin:0;color:var(--muted);font-size:.95rem;max-width:none}
+.menu .soon .dish a,.menu .soon .dish b{font-weight:500;font-style:italic}
+.menu .fine{border-top:1px solid var(--rule);margin:2rem 0 0;padding-top:1rem;font-size:.92rem;color:var(--muted);text-align:center;max-width:none}
+
+@media (max-width:900px){
+  .hero,.split,.figs,.feature{grid-template-columns:1fr;gap:2.5rem}
+  .banners,.lockers{grid-template-columns:1fr 1fr}
+  .menu{padding:1.75rem 1.25rem}
+  .cols{grid-template-columns:1fr}.cols>div{padding:1rem 0;border-left:0;border-top:1px solid var(--rule)}
+  .steps{grid-template-columns:1fr 1fr}
+  .ledger>li,dl.defs{grid-template-columns:1fr;gap:.35rem}
+}
+@media (max-width:520px){.banners,.lockers{grid-template-columns:1fr}.hot span{font-size:.78rem;padding:.2rem .4rem}.dish{flex-wrap:wrap}.dish i{display:none}.wrap{width:calc(100% - 2rem)}.steps{grid-template-columns:1fr}nav ul{gap:1rem}}
+@media (prefers-reduced-motion:reduce){.door,.lk.open .door{transition:none!important}}
+@media print{.contlink{display:none}.bn{clip-path:none!important}.lk{min-height:0}.in{position:static;visibility:visible}.door,.lkctl,header.site,.skip,.row,.btn,nav{display:none}.view{display:block!important;padding:1rem 0;break-after:page}}
+
+/* ===== MOODBOARD PASS 2 (pass 1 critique applied): Dgt Hum Inspo Board — Y2K back-to-school scrapbook ===== */
+.hero{background-image:linear-gradient(rgba(36,86,200,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(36,86,200,.09) 1px,transparent 1px);background-size:28px 28px;padding:1.5rem;border:2px solid var(--ink)}
+h1{font-family:"Arial Rounded MT Bold","Arial Black",Arial,system-ui,sans-serif;letter-spacing:-.01em}
+header.site{background:var(--paper2);border-bottom:3px solid var(--ink)}
+html.calm *{transform:none!important;box-shadow:none!important}html.calm body,html.calm .hero{background-image:none!important}
+.label{background:linear-gradient(transparent 58%,#FFC61A 58%);display:inline-block;padding:0 .3rem}
+.btn{border:2px solid var(--ink);border-radius:12px;box-shadow:4px 4px 0 var(--ink)}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.btn.alt{background:#fff}
+.tray{background:#fff;padding:14px 14px 40px;border:2px solid var(--ink);box-shadow:7px 7px 0 rgba(29,26,22,.9);transform:rotate(-1.3deg)}
+.trayin{position:relative}
+.photo{background:#fff;padding:12px 12px 8px;border:2px solid var(--ink);box-shadow:7px 7px 0 rgba(29,26,22,.9)}
+figcaption,.tcap,.bsrc{font-family:"Caveat","Segoe Print","Bradley Hand",cursive;font-size:1.05em}
+#h-home{text-shadow:3px 3px 0 #ef6aa5}
+.wall{background:var(--cork);background-image:radial-gradient(rgba(0,0,0,.14) 1.5px,transparent 1.6px);background-size:22px 22px;border-top:8px solid #7A4522;border-bottom:8px solid #7A4522}
+.wall h2{background:#fffdf5;box-shadow:3px 3px 0 rgba(0,0,0,.3);transform:rotate(-.6deg);border:1px solid var(--line)}
+.door{background:var(--royal)}
+.lockers .lk:nth-child(2) .door .no{background:var(--ochre);color:var(--ink)}
+.lockers .lk:nth-child(3) .door .no{background:#ffd1e3;color:var(--ink)}
+.banners li:nth-child(2) .bn{background:#2f4f3f}
+.banners li:nth-child(3) .bn{background:var(--pink)}
+.status{background:var(--ochre);color:var(--ink);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.menu{position:relative}
+.sec{border-top:3px solid var(--ink)}
+.steps li{border-top:4px solid var(--royal)}
+.steps li:nth-child(2){border-top-color:var(--sage)}.steps li:nth-child(3){border-top-color:var(--pink)}.steps li:nth-child(4){border-top-color:var(--red)}.steps li:nth-child(5){border-top-color:var(--ochre)}
+@media print{.contlink{display:none}.tray,.photo{transform:none;box-shadow:none}}
+
+/* ===== BUILD V4: varsity timeline, chalkboard critique, bulletin methodology ===== */
+.gym{background-color:#d7dee7;background-image:linear-gradient(rgba(255,255,255,.55) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.55) 2px,transparent 2px);background-size:56px 28px;border:2px solid var(--ink);box-shadow:6px 8px 0 rgba(0,0,0,.25)}
+.scoreboard{background:linear-gradient(#1d2a40,#0c1420);color:#FFC61A;margin:0 -1.5rem;padding:1rem 1rem 1.1rem;text-align:center;border-bottom:5px solid #e3b95c}
+.scoreboard .sb-title{display:block;font-family:"Graduate","Arial Black",serif;font-size:clamp(1.5rem,3.4vw,2.3rem);letter-spacing:.14em;text-transform:uppercase;text-shadow:3px 3px 0 rgba(0,0,0,.5)}
+.scoreboard .sb-sub{display:block;margin-top:.35rem;font:600 .78rem "Oswald",var(--sans);letter-spacing:.28em;text-transform:uppercase;color:#fff}
+.bn{background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1.5px);background-size:14px 14px;border-top:14px solid #e3b95c;padding:1.5rem 1.35rem 4rem;position:relative;box-shadow:0 12px 20px rgba(0,0,0,.28);transition:transform .25s ease,box-shadow .25s ease;clip-path:polygon(0 0,100% 0,100% 100%,50% 87%,0 100%)}
+.bn::before{content:"";display:block;height:7px;background:repeating-linear-gradient(90deg,#e3b95c 0 26px,rgba(255,255,255,.9) 26px 52px);margin:-.3rem 0 1.1rem}
+.bn::after{content:"";position:absolute;inset:10px;border:2px dashed rgba(255,255,255,.65);pointer-events:none}
+.bn:hover{transform:translateY(-6px);box-shadow:0 18px 28px rgba(0,0,0,.32)}
+.bn time{font-family:"Graduate","Arial Black",serif;font-size:3.5rem;letter-spacing:.02em;color:#FFC61A;text-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.bn h3{font-family:"Graduate",serif;text-transform:uppercase;letter-spacing:.05em;font-size:1.28rem;line-height:1.3}
+.bn-cat{display:block;font:600 .76rem "Oswald",var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#fff;opacity:.92;margin-top:.4rem}
+.bn .ex{font-family:"Graduate",serif;letter-spacing:.12em;background:rgba(0,0,0,.28);color:#fff;border:2px dashed rgba(255,255,255,.85);padding:.28rem .6rem}
+.bn.open{background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1.5px)}
+.bn.open::after{border-color:rgba(23,33,46,.45)}
+.bn.open::before{background:repeating-linear-gradient(90deg,var(--rule) 0 26px,rgba(255,255,255,.9) 26px 52px)}
+.bn.open time{color:var(--deep);text-shadow:none}
+.bn.open .bn-cat{color:var(--muted)}
+#timeline .tablewrap caption{font-family:"Graduate",serif;letter-spacing:.04em;text-transform:uppercase}
+
+/* Chalkboard — Critique */
+.chalkboard{background-color:#1E7040;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.5px),radial-gradient(rgba(255,255,255,.04) 1px,transparent 1.5px);background-size:22px 22px,34px 34px;background-position:0 0,9px 13px;border:14px solid #7A4522;outline:3px solid #4E2C15;box-shadow:8px 10px 0 rgba(0,0,0,.3),inset 0 0 70px rgba(0,0,0,.35);padding:2.1rem 2.4rem 2.4rem;color:#f4f1e6}
+.chalkboard h2{color:#fff;font-family:"Caveat","Segoe Print",cursive;font-size:2.05rem;text-decoration:underline wavy rgba(255,217,77,.85) 2px;text-underline-offset:8px}
+.chalkboard p{color:#eef0e4;max-width:72ch}
+.chalk-head{font-family:"Caveat","Segoe Print",cursive;font-size:1.7rem;color:#FFC61A!important;margin-bottom:1.6rem}
+.chalk-eq{font-family:"Caveat","Segoe Print",cursive;font-size:1.45rem;color:#FFC61A!important;border:2px dashed rgba(255,255,255,.55);padding:.7rem 1.1rem;display:inline-block;transform:rotate(-.5deg)}
+html.calm .chalkboard{background-image:none}
+
+/* Bulletin board — Methodology */
+.boardwrap{background-color:var(--cork);background-image:radial-gradient(rgba(0,0,0,.14) 1.5px,transparent 1.7px),radial-gradient(rgba(255,255,255,.10) 1.5px,transparent 1.7px);background-size:22px 22px,30px 30px;background-position:0 0,7px 11px;border:12px solid #7A4522;box-shadow:8px 10px 0 rgba(0,0,0,.3);padding:0 1.9rem 2rem;margin-top:3rem}
+.boardwrap .sec{border-top:0;margin-top:0;padding-top:2rem}
+.boardwrap h2{background:#fffdf5;display:inline-block;padding:.35rem .85rem;border:1px solid var(--line);box-shadow:3px 3px 0 rgba(0,0,0,.3);transform:rotate(-.6deg)}
+.boardwrap .defs{background:#fffdf5;border:1px solid var(--line);box-shadow:5px 6px 0 rgba(0,0,0,.28);padding:1.4rem 1.5rem;position:relative}
+.boardwrap .defs::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--red);box-shadow:inset 2px 2px 3px rgba(255,255,255,.6),2px 3px 4px rgba(0,0,0,.4)}
+.boardwrap .cols{gap:1.6rem}
+.boardwrap .cols>div{background:#fffdf5;border:1px solid var(--line);box-shadow:5px 6px 0 rgba(0,0,0,.28);padding:1.3rem 1.35rem!important;border-left:1px solid var(--line)!important;position:relative;transform:rotate(-.7deg)}
+.boardwrap .cols>div:nth-child(2){transform:rotate(.6deg)}
+.boardwrap .cols>div:nth-child(3){transform:rotate(-.4deg)}
+.boardwrap .cols>div::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--royal);box-shadow:inset 2px 2px 3px rgba(255,255,255,.6),2px 3px 4px rgba(0,0,0,.4)}
+.boardwrap .cols>div:nth-child(2)::before{background:var(--ochre)}
+.boardwrap .cols>div:nth-child(3)::before{background:var(--pink)}
+html.calm .boardwrap .cols>div,html.calm .boardwrap h2{transform:none!important}
+
+@media (prefers-reduced-motion:reduce){.bn{transition:none!important}.bn:hover{transform:none}}
+@media print{.chalkboard{background:#fff!important;border:3px solid #000;outline:none;box-shadow:none}.chalkboard h2,.chalkboard p,.chalk-head,.chalk-eq{color:#000!important;text-decoration:none}.boardwrap{background:#fff;border:3px solid #000;box-shadow:none}.boardwrap .defs,.boardwrap .cols>div{box-shadow:none}.scoreboard{background:#fff;color:#000;border-bottom:3px solid #000}.scoreboard .sb-title,.scoreboard .sb-sub{color:#000;text-shadow:none}.bn{box-shadow:none}}
+
+/* ===== BUILD V5: banners matched to reference photo (royal blue pennants, centered) ===== */
+.banners{justify-items:center}
+.banners li{width:100%;max-width:330px}
+.gym .banners li .bn,.gym .banners li:nth-child(2) .bn,.gym .banners li:nth-child(3) .bn{background-color:#1d4fa1;background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1.5px);background-size:14px 14px}
+.gym .banners li .bn.open{background-color:#eef2f7;background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1.5px)}
+.bn{clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);text-align:center;padding:1.3rem 1.3rem 4.6rem;border-top:5px solid rgba(255,255,255,.9)}
+.bn::before{height:18px;background:radial-gradient(circle at 9px 9px,#e8eef6 3px,#93a5bd 5px,transparent 6.5px),radial-gradient(circle at calc(100% - 9px) 9px,#e8eef6 3px,#93a5bd 5px,transparent 6.5px);background-repeat:no-repeat;margin:0 0 .3rem}
+.bn::after{inset:7px;border:2px solid rgba(255,255,255,.85)}
+.bn.open::after{border-color:rgba(23,33,46,.5)}
+.bn .ex{display:inline-block;margin-bottom:.55rem}
+.bn-school{display:block;font-family:"Graduate","Arial Black",serif;font-size:2.05rem;line-height:1.05;letter-spacing:.07em;color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.3)}
+.bn.open .bn-school{color:var(--deep);text-shadow:none}
+.bn-cat{display:block;font:600 .8rem "Oswald",var(--sans);letter-spacing:.3em;text-transform:uppercase;color:#fff;margin:.3rem 0 .55rem}
+.bn.open .bn-cat{color:var(--muted)}
+.bn time{color:#fff;font-size:4.1rem;text-shadow:2px 3px 0 rgba(0,0,0,.35)}
+.bn.open time{color:var(--deep);text-shadow:none}
+.bn h3{font-size:1.32rem;margin-top:.55rem}
+.bn p{margin-inline:auto}
+.bn-emblem{display:block;margin-top:.85rem;font-size:1.35rem;line-height:1;color:#fff}
+.bn.open .bn-emblem{color:var(--rule)}
+
+/* ===== BUILD V6: locker rebuild, sideways timeline, palette discipline ===== */
+.lk{border-radius:6px;border-color:#0f2038;box-shadow:0 14px 22px rgba(12,23,40,.35)}
+.door{background:linear-gradient(155deg,#3a67d8 0%,#2456c8 45%,#1c43a5 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -16px 26px rgba(0,0,0,.20)}
+.door .vent{width:66%;height:38px;background:repeating-linear-gradient(#0d1e33 0 5px,#5b7cae 5px 7px,transparent 7px 12px);border:2px solid rgba(6,17,32,.55);border-radius:3px;box-shadow:inset 0 2px 5px rgba(0,0,0,.5)}
+.door .no{background:linear-gradient(#fdfefe,#c7d2df);border:1px solid #71809a;box-shadow:1px 2px 3px rgba(0,0,0,.4),inset 0 1px 0 #fff;font-family:"Oswald",var(--sans);letter-spacing:.09em;padding:.32rem .7rem}
+.door .nm{text-shadow:1px 2px 0 rgba(0,0,0,.35)}
+.in{background-color:#f8fafc;background-image:linear-gradient(#e2eaf3 1px,transparent 1px);background-size:100% 26px;box-shadow:inset 0 12px 20px rgba(0,0,0,.14)}
+.shelf{border-top:12px solid #93a5bb;box-shadow:0 3px 0 #5d6d84,inset 0 1px 0 rgba(255,255,255,.7)}
+.wall{position:relative}
+.wall::after{content:"";display:block;height:18px;background:linear-gradient(#9a7448,#7A4522);border-top:3px solid #4E2C15;margin:0 -1.5rem}
+
+/* Timeline: sideways-scrolling wall */
+.banners{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:2rem;padding:.4rem .25rem 1.3rem;scrollbar-width:thin}
+.banners li{flex:0 0 300px;width:auto;max-width:none;scroll-snap-align:center;margin-bottom:0}
+.banners .bn{height:30rem}
+.bn-nav{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:.4rem;background:#fff;border:2px solid var(--ink);padding:.6rem .9rem;box-shadow:3px 3px 0 var(--ink)}
+.bn-hint{font-size:.92rem;color:var(--muted);font-weight:600}
+@media (prefers-reduced-motion:reduce){.banners{scroll-behavior:auto}}
+@media print{.banners{display:grid;overflow:visible}.banners .bn{height:auto}.bn-nav{display:none}.wall::after{display:none}}
+
+/* ===== BUILD V9: flat enamel (no generic gradients), locker scroll, smooth doors, walnut ===== */
+.door{background:#2456c8}
+.scoreboard{background:#101f38}
+.wall::after{background:#7A4522}
+.door{transition:transform .7s cubic-bezier(.25,.7,.25,1),visibility 0s;will-change:transform;backface-visibility:hidden}
+.lk.open .door{transition:transform .7s cubic-bezier(.25,.7,.25,1),visibility 0s .7s}
+.in{overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth;opacity:0;transition:opacity .35s ease .18s}
+.lk.open .in{opacity:1}
+.in-hint{font:600 .85rem var(--sans);color:var(--muted);border-bottom:1px dashed var(--rule);padding-bottom:.45rem;margin-bottom:.7rem}
+
+/* ===== BUILD V10: six-person team board, board-vibe colour balance ===== */
+.boardwrap .cols>div:nth-child(4){transform:rotate(.5deg)}
+.boardwrap .cols>div:nth-child(5){transform:rotate(-.6deg)}
+.boardwrap .cols>div:nth-child(6){transform:rotate(.4deg)}
+.boardwrap .cols>div:nth-child(4)::before{background:var(--sage)}
+.boardwrap .cols>div:nth-child(5)::before{background:var(--red)}
+.boardwrap .cols>div:nth-child(6)::before{background:var(--pink)}
+
+/* ===== BUILD V12: source menu as a real menu + MLA hanging indents ===== */
+.menu{box-shadow:6px 8px 0 rgba(0,0,0,.18)}
+.menu::after{content:"";position:absolute;inset:10px;border:1px solid var(--navy);pointer-events:none}
+.menu .mh .over{display:block;font:600 .78rem var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:.45rem}
+.menu h3{display:flex;align-items:center;gap:1rem;letter-spacing:.16em;text-transform:uppercase;font-size:.95rem}
+.menu h3::before,.menu h3::after{content:"";flex:1;border-top:2px dotted #7d8ca1}
+.menu .dish{align-items:flex-start;margin:1.15rem 0 .1rem}
+.menu .dish i{flex:0 1 2.5rem;min-width:1rem}
+.menu .dish span{font-family:var(--serif);font-style:italic;padding-top:.15rem}
+.cite{flex:1 1 auto;min-width:0;margin:0;font-size:1rem;line-height:1.55;color:var(--ink);padding-left:1.5rem;text-indent:-1.5rem}
+.cite a{overflow-wrap:anywhere}
+.menu .desc{margin:.25rem 0 0 1.5rem}
+@media print{.menu::after{display:none}}
+
+/* ===== BUILD V13: width-limited panels centered as blocks ===== */
+.menu{margin-left:auto;margin-right:auto}
+.note{margin-left:auto;margin-right:auto}
+#sources p:has(> #expbib),#sources p:has(> label[for="srcfilter"]){text-align:center}
+
+/* ===== BUILD V14: page openings centered on screen ===== */
+.view>.wrap>.label,.view>.wrap>h1,.view>.wrap>.lede{text-align:center}
+.view>.wrap>h1,.view>.wrap>.lede{margin-inline:auto}
+.hero>div:first-child{text-align:center}
+.hero h1{margin-inline:auto}
+.hero .row{justify-content:center}
+
+/* ===== BUILD V17: narrative cleanup — one stacked chapter flow ===== */
+.chapters{margin-top:1.5rem}
+.chapter{border-top:2px solid var(--line);padding:1.35rem 0 .35rem}
+.chapter h3{font-size:1.25rem;margin-bottom:.45rem}
+.chapter p{max-width:72ch}
+.chapter figure{max-width:560px;margin:1rem auto}
+.lkbar{background:var(--paper);border:1px solid var(--rule);padding:.9rem 1.1rem;margin-top:1rem;max-width:72ch}
+.lkbar .status{margin:0 0 .6rem}
+.lkbar .kbnote{color:var(--muted);font-size:.92rem;margin:.7rem 0 0;max-width:none}
+
+/* ===== BUILD V18: locker stickers on a school wall ===== */
+.wall{background-color:#D9E4EF;background-image:linear-gradient(rgba(51,80,110,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(51,80,110,.13) 1px,transparent 1px);background-size:100% 28px,56px 28px}
+.wall h2{border:2px solid var(--navy);border-radius:12px;box-shadow:0 0 0 3px #fff,4px 5px 0 rgba(23,33,46,.25)}
+.wall>p{background:#fff!important;border:2px solid var(--navy)!important;border-radius:14px;box-shadow:0 0 0 3px #fff,5px 6px 0 rgba(23,33,46,.22);padding:.7rem 1rem!important}
+.lk{border-radius:16px;box-shadow:0 0 0 4px #fff,8px 10px 0 rgba(23,33,46,.25)}
+.lockers .lk:nth-child(1){transform:rotate(-.5deg)}
+.lockers .lk:nth-child(2){transform:rotate(.45deg)}
+.lockers .lk:nth-child(3){transform:rotate(-.35deg)}
+.lk::after{content:"\2605";position:absolute;top:-11px;right:-9px;z-index:3;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--mustard);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 0 3px #fff,2px 3px 0 rgba(23,33,46,.3);transform:rotate(12deg)}
+.door{border-radius:12px}
+.in{border-radius:12px}
+.lkbar{background:#fff;border:2px solid var(--navy);border-radius:14px;box-shadow:0 0 0 3px #fff,5px 6px 0 rgba(23,33,46,.22);transform:rotate(.3deg)}
+@media print{.lockers .lk{transform:none!important}.lk::after{display:none}}
+
+/* ===== BUILD V19: corner stars off; control bar spans the wall ===== */
+.lk::after{display:none}
+.lkbar{max-width:none;transform:none;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.5rem}
+.lkbar .status{margin:0}
+.lkbar .kbnote{margin:0 0 0 auto}
+
+/* ===== BUILD V20: locker controls unboxed and stacked ===== */
+.lkbar{background:transparent;border:0;border-radius:0;box-shadow:none;transform:none;display:block;max-width:none;padding:0;margin-top:1.25rem}
+.lkbar .status{margin:0 0 .7rem}
+.lkbar .lkctl{margin-top:0}
+.lkbar .kbnote{display:inline-block;background:var(--paper);border:1px solid var(--rule);padding:.45rem .8rem;margin:.75rem 0 0;color:var(--muted)}
+
+/* ===== BUILD V22: visible focus on tabbed banners ===== */
+.banners li:focus-within{outline:3px solid var(--focus);outline-offset:2px;filter:drop-shadow(0 0 6px rgba(11,95,208,.55))}
+
+/* ===== BUILD V23: white locker interiors; dark-blue wall frame ===== */
+.in{background:#fff;background-image:none;box-shadow:none}
+.wall{border-top-color:#1B365D;border-bottom-color:#1B365D}
+.wall::after{background:#1B365D;border-top:3px solid #11233F}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="Federal School Lunch Audit — home"><span><b>Federal School Lunch Audit</b><small>Digital Humanities project — compiled build</small></span></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#findings">Narrative</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#compare">Data</a></li>
+        <li><a href="#critique">Critique</a></li>
+        <li><a href="#about">Methodology</a></li>
+        <li><a href="#sources">Bibliography</a></li>
+        <li><button type="button" id="calm" class="btn alt" style="padding:.35rem .8rem" aria-pressed="false">Plain view</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- HOME -->
+<section class="view" id="home" data-title="Federal School Lunch Audit" aria-labelledby="h-home">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="label">Digital Humanities project</p>
+        <h1 id="h-home" tabindex="-1">How federal school lunch funding reaches states, and why it differs.</h1>
+        <p class="lede">Placeholder description: one or two sentences announcing what is being launched and who it is for. Replace this text with your own before publishing.</p>
+        <p><b>Central argument (placeholder):</b> one sentence stating the claim the whole project defends. If a visitor reads nothing else, they should meet the argument here and in the narrative’s first paragraph.</p>
+        <div class="row">
+          <a class="btn" href="#compare">Explore the data</a>
+          <a class="btn alt" href="#findings">Read the narrative</a>
+        </div>
+      </div>
+      <div>
+        <div class="tray">
+          <div class="trayin" role="group" aria-label="Site sections, arranged on a lunch tray" aria-describedby="traycap"><img src="assets/tray.jpg" width="1024" height="597" alt="Photograph of a school lunch tray: spaghetti with meat sauce and a garlic knot, broccoli, salad with a dressing cup, a whole apple, and a carton of low-fat milk.">
+          <a class="hot" style="left:40%;top:49%;width:34%;height:31%" href="#timeline"><span>Pasta &#8594; Timeline</span></a>
+          <a class="hot" style="left:34%;top:21%;width:22%;height:30%" href="#compare"><span>Broccoli &#8594; Data</span></a>
+          <a class="hot top" style="left:56%;top:10%;width:17%;height:38%" href="#findings"><span>Milk &#8594; Narrative</span></a>
+          <a class="hot" style="left:12%;top:46%;width:27%;height:30%" href="#sources"><span>Salad &#8594; Bibliography</span></a>
+          <a class="hot back" style="left:16%;top:19%;width:21%;height:28%" href="#method"><span>Apple &#8594; Method</span></a></div>
+        </div>
+        <p class="tcap" id="traycap">Photograph: U.S. Department of Agriculture, Food and Nutrition Service — a Mesa Public Schools lunch (spaghetti with ground beef, garlic knot, broccoli, salad, apple, and milk), from “School Meals Trays, Many Ways.” Public domain (U.S. federal government work). Each tray compartment is a navigation link — select a compartment to open that section.</p>
+      </div>
+    </div>
+
+    <nav class="jump" aria-label="On this page"><span>On this page</span><a href="#in-report">Contents</a><a href="#questions">Questions</a><a href="#method">Method</a><a href="#access">Accessibility notes</a></nav>
+
+    <div class="sec">
+      <h2 id="in-report" tabindex="-1">Contents</h2>
+      <ul class="ledger">
+        <li><b><a href="#findings">Narrative</a></b><span>The narrative scaffold, plus questions, findings, and draft recommendations — one locker per category, shelves inside.</span><em>Scaffold + lockers</em></li>
+        <li><b><a href="#timeline">Timeline</a></b><span>Milestones presented as records banners, each tied to a source.</span><em>10 templates</em></li>
+        <li><b><a href="#compare">Data</a></b><span>Item-by-item comparison with a tile grid, a distribution strip plot, a bar chart, and a sortable table.</span><em>Awaiting data</em></li>
+        <li><b><a href="#critique">Critique</a></b><span>The revised data critique: ontology, inclusions, and blind spots.</span><em>Full page</em></li>
+        <li><b><a href="#about">Methodology</a></b><span>How the project was made, who made it, and the GenAI disclosure.</span><em>Complete structure</em></li>
+        <li><b><a href="#sources">Bibliography</a></b><span>Every claim should trace to a source listed on this menu. Placed last, following the Drone Wars precedent described on the Methodology page.</span><em>7 entries, annotated</em></li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2 id="questions" tabindex="-1">Questions this site answers</h2>
+      <div class="cols stickies">
+        <div><h3>Where does the money go?</h3><p>Research question 1: how do total and per-student allocation vary across states, and how stable are those differences over time? Shelved in Locker 1, Research Questions.</p></div>
+        <div><h3>What explains the gaps?</h3><p>Research question 2: do the differences follow enrollment, poverty concentration, participation, state policy choices — or the categories in the dataset itself?</p></div>
+        <div><h3>What should change?</h3><p>Research question 3: which reporting, formula, and monitoring changes does the evidence support, and how strongly? Answered only from the Findings locker.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2 id="method" tabindex="-1">Method</h2>
+      <p class="intro">Five steps, applied the same way to every item. Placeholder text — replace with your own method.</p>
+      <ol class="steps">
+        <li><b>Define</b>Fix the measures and the reporting period before looking at results.</li>
+        <li><b>Assemble</b>Collect the data from published sources and record each source.</li>
+        <li><b>Normalize</b>Express the measure per unit so items of different sizes compare fairly.</li>
+        <li><b>Compare</b>Rank the items, chart change over time, and flag outliers.</li>
+        <li><b>Review</b>Test explanations against the literature and grade the strength of the evidence.</li>
+      </ol>
+      <div class="note">Charts, figures, and citations appear only when backed by a recorded source. Empty frames on this site are marked as such.</div>
+    </div>
+
+    <div class="sec">
+      <h2 id="access" tabindex="-1">Accessibility notes</h2>
+      <dl class="defs">
+        <dt>Contrast</dt><dd>Text and background pairs meet WCAG AA contrast. Meaning is never carried by color alone; every filled tile also has a value in the table.</dd>
+        <dt>Keyboard and screen readers</dt><dd>Every view can be used by keyboard, with a skip link, visible focus outlines (including on tray items and locker doors), plain text navigation with no drop-down menus, and descriptive link text.</dd><dt>Display options</dt><dd>The Plain view control in the navigation removes rotations, shadows, and background patterns for a plainer reading display; the setting is remembered between visits.</dd>
+        <dt>Charts</dt><dd>Each chart has a text description and a matching table.</dd>
+        <dt>Media</dt><dd>No audio, video, or auto-moving content. Photographs have text descriptions, and the locker door animation is disabled when reduced motion is preferred.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="view" id="timeline" data-title="Timeline" aria-labelledby="h-timeline">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="label">Timeline</p>
+        <h1 id="h-timeline" tabindex="-1">Timeline</h1>
+        <p class="lede">Milestones hung in order like varsity championship banners on a gym wall — felt pennants, sewn stripes, and block letters. Every entry needs a source before it is added; an entry without a matching source belongs in the Open slot, not on a dated banner. The ten banners below are event templates — placeholders for sourced milestones. Select a banner (or Tab to it and press Enter) to view its details in the panel below the wall; focus moves to the panel so the details are read, and the panel’s Close details button returns focus to the banner. Sources are listed on the <a href="#sources">Bibliography</a> page.</p>
+      </div>
+      <button class="btn alt" type="button" data-csv="timeline">Download timeline template (CSV)</button>
+    </div>
+    <div class="gym">
+      <div class="scoreboard" aria-hidden="true"><span class="sb-title">Timeline</span><span class="sb-sub">Home of the National School Lunch Program</span></div>
+      <div class="rail" aria-hidden="true"></div>
+      <ol class="banners" tabindex="0" aria-label="Milestone records, examples. Use the Past and Present buttons, or scroll horizontally, to move along the timeline.">
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev01"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 1</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev02"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 2</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev03"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 3</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev04"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 4</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev05"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 5</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev06"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 6</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev07"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 7</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev08"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 8</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev09"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 9</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="ev10"><span class="ex">EXAMPLE</span><span class="bn-school">NSLP</span><span class="bn-cat">Policy Record</span><time>YYYY</time><h3>Event template 10</h3><p>Template: replace with the year, the record, and a one- to two-sentence summary of the milestone, supported by the source below.</p><span class="bn-emblem" aria-hidden="true">&#9733;</span></div><p class="bsrc">Source: required before publishing — see <a href="#sources">Bibliography</a></p></li>
+        <li><div class="bn open" tabindex="0" role="button" aria-expanded="false" aria-controls="banner-detail" data-banner="open"><span class="bn-school">NSLP</span><span class="bn-cat">Future Record</span><time>Open</time><h3>Add a record</h3><p>Reserved for the next milestone. Add it here only when its source is recorded on the Bibliography page.</p><span class="bn-emblem" aria-hidden="true">&#9734;</span></div><p class="bsrc">Source required before adding — see <a href="#sources">Bibliography</a></p></li>
+      </ol>
+      <div class="bn-nav"><button class="btn alt" type="button" id="bn-prev">&#8592; Past</button><span class="bn-hint">Scroll horizontally, or use Past and Present to move along the timeline.</span><button class="btn alt" type="button" id="bn-next">Present &#8594;</button></div>
+    </div>
+    <div id="banner-detail" role="region" aria-labelledby="bd-title" hidden>
+      <h3 id="bd-title" tabindex="-1">Record details</h3>
+      <p id="bd-body" style="color:var(--muted)"></p>
+      <p id="bd-cite" style="font-weight:600;color:var(--red)"></p>
+      <button class="btn alt" type="button" id="bd-close">Close details</button>
+    </div>
+    <div class="tablewrap"><table>
+          <caption>Records, table equivalent of the banners</caption>
+          <thead><tr><th scope="col">Year</th><th scope="col">Record</th><th scope="col">Summary</th><th scope="col">Source status</th></tr></thead>
+          <tbody>
+          <tr><td>Template 1</td><td>Event template 1</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 2</td><td>Event template 2</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 3</td><td>Event template 3</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 4</td><td>Event template 4</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 5</td><td>Event template 5</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 6</td><td>Event template 6</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 7</td><td>Event template 7</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 8</td><td>Event template 8</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 9</td><td>Event template 9</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Template 10</td><td>Event template 10</td><td>Placeholder summary — replace with the sourced record.</td><td>Source required before publishing</td></tr>
+          <tr><td>Open</td><td>Next record</td><td>Reserved for the next sourced milestone.</td><td>Source required before adding</td></tr>
+          </tbody></table></div>
+    <p style="margin-top:1rem;font-size:.92rem;color:var(--muted)">Banner colors on this page are decorative only. If color encodes a category in your version, add a legend here — meaning must never rest on color alone.</p>
+    <div class="sec">
+      <h2>Research tracks</h2>
+      <div class="cols">
+        <div><h3>Historical context</h3><p>Which past changes should be reviewed, and how do they inform the current pattern?</p></div>
+        <div><h3>Policy research</h3><p>Which changes may explain observed shifts, and which guidance gaps need review?</p></div>
+        <div><h3>Literature review</h3><p>Which research themes should be prioritized, and how will the evidence inform recommendations?</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="view" id="compare" data-title="Data" aria-labelledby="h-compare">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="label">Data</p>
+        <h1 id="h-compare" tabindex="-1">Comparison across items</h1>
+        <p class="lede">Compares the measure across items, identifies outliers, and frames questions for further analysis.</p>
+      </div>
+      <button class="btn alt" type="button" data-csv="data">Download data template (CSV)</button>
+      <button class="btn alt" type="button" id="dlcomp" disabled>Download computed table (CSV)</button>
+    </div>
+    <p style="margin-top:1.5rem"><span class="status" id="status">No data loaded</span></p>
+    <div class="note" id="dq" hidden></div>
+    <nav class="jump" aria-label="On this page"><span>On this page</span><a href="#figures">Figures</a><a href="#how">How items are compared</a><a href="#data-table">Table</a></nav>
+
+    <div class="figs" id="figures">
+      <figure>
+        <div class="chart">
+          <svg id="tiles" class="tile" viewBox="0 0 616 440" role="img" aria-labelledby="tiles-t tiles-d"><title id="tiles-t">Tile grid of the per-unit value by item</title><desc id="tiles-d">Each item is one square tile. Values are listed in the table below the figure.</desc></svg>
+          <div class="legend" id="legend" aria-hidden="true"><i style="background:#fff"></i>No data</div>
+        </div>
+        <figcaption><b>Figure 1 — Tile grid (spatial representation).</b> Per-unit value, by item. Each item is one equal-sized tile, so small items stay visible — the reason for choosing this representation over a geographic map is argued in the narrative. The table below holds the same values.</figcaption>
+      </figure>
+      <figure>
+        <div class="chart">
+          <svg id="strip" viewBox="0 0 400 300" role="img" aria-labelledby="strip-t strip-d"><title id="strip-t">Distribution of per-unit values</title><desc id="strip-d">Each dot is one item, positioned by its per-unit value, so clustering and outliers are visible. The table below holds the same values.</desc><text x="200" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#4a5668">Distribution appears here when data is loaded</text></svg>
+        </div>
+        <figcaption><b>Figure 2 — Distribution.</b> Per-unit values, one dot per item; clustering and outliers are the story here. Same source data as Figure 1.</figcaption>
+      </figure>
+      <figure>
+        <div class="chart">
+          <svg id="bars" viewBox="0 0 400 300" role="img" aria-labelledby="bars-t bars-d"><title id="bars-t">Bar chart of the per-unit value by item</title><desc id="bars-d">One horizontal bar per item, drawn from the same data file as the tile grid. The table below holds the same values.</desc><text x="200" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#4a5668">Bars appear here when data is loaded</text></svg>
+        </div>
+        <figcaption><b>Figure 3 — Bar chart.</b> Per-unit value by item. Same source data as Figures 1–2; values repeated in the table below.</figcaption>
+      </figure>
+    </div>
+
+    <div class="sec">
+      <h2 id="how" tabindex="-1">How items are compared</h2>
+      <dl class="defs">
+        <dt>Measure</dt><dd>Total divided by the eligible count, so items of different sizes can be compared. Placeholder definition — replace with your own measure.</dd>
+        <dt>Reporting period</dt><dd>One period, applied to every item. Missing items are listed, not dropped.</dd>
+        <dt>Outliers</dt><dd>Items falling well outside the overall spread on the measure, reviewed individually for size, need, and policy factors.</dd>
+        <dt>Planned sources</dt><dd>To be confirmed and recorded on the Bibliography page as each one is used.</dd>
+      </dl>
+    </div>
+
+    <div class="sec">
+      <h2>Analytic questions</h2>
+      <div class="cols">
+        <div><h3>By item</h3><p>Which items show the largest differences? Are patterns driven by size, need, or policy variation?</p></div>
+        <div><h3>Over time</h3><p>Are shifts correlated with policy changes, funding cycles, or demographic shifts?</p></div>
+        <div><h3>Outliers</h3><p>Which items require deeper review, and what factors may explain their patterns?</p></div>
+      </div>
+    </div>
+
+    <div class="note"><b>Data critique, in brief:</b> this dataset counts what its sources chose to record, divided into items, totals, and eligible counts. It can show differences in the per-unit measure; it cannot show quality, experience, or anyone outside the eligible count. The full, revised critique is on the <a href="#about">About / Methodology</a> page.</div>
+
+    <div class="sec" id="data-table">
+      <div class="tablewrap">
+        <table>
+          <caption>Comparison values, table equivalent of the tile grid</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col" class="num">Total</th><th scope="col" class="num">Eligible count</th><th scope="col" class="num">Per-unit value</th><th scope="col">Period and source</th></tr></thead>
+          <tbody id="tbody"><tr><td>Awaiting data</td><td class="num">Not yet supplied</td><td class="num">Not yet supplied</td><td class="num">Not yet supplied</td><td>To be documented</td></tr></tbody>
+        </table>
+      </div>
+      <p style="margin-top:.75rem"><button class="btn alt" type="button" id="sortItem">Sort table: by item</button> <button class="btn alt" type="button" id="sortVal">Sort table: by per-unit value</button></p>
+      <p style="margin-top:.75rem;font-size:.92rem;color:var(--muted)">Dataset credit: placeholder — when data is loaded, name the dataset, its publisher, and its license or credit line here.</p>
+      <p style="margin-top:1rem;color:var(--muted);font-size:.95rem">To fill the tile grid and table, save a file named exactly <code>assets/data.csv</code> in your repository, with the header row <code>item,total,eligible,period,source</code>. Use two-letter state codes as the item values if states are the items being compared. Leave missing values blank; they will be shown as not reported.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section class="view" id="findings" data-title="Narrative" aria-labelledby="h-findings">
+  <div class="wrap">
+    <div class="feature">
+      <figure class="photo"><img src="assets/photo.jpg" width="1920" height="1280" loading="lazy" alt="Placeholder image of a desk with a notebook, a pencil, and a stack of blank folders."><figcaption>Placeholder image (AI-generated). Replace with your own photograph, caption, and credit line.</figcaption></figure>
+      <div>
+        <p class="label">Central narrative</p>
+        <h1 id="h-findings" tabindex="-1">Unlock the questions. Check the evidence.</h1>
+        <p class="lede">Three lockers hold the working evidence: one for research questions, one for findings, one for recommendations — each question, finding, and recommendation on its own shelf inside its locker. Findings and recommendations stay marked as pending until a source supports them.</p>
+      </div>
+    </div>
+    <div class="sec" style="margin-top:0;border-top:0;padding-top:0">
+      <h2 id="narrative" tabindex="-1">The narrative</h2>
+      <p class="status" id="wc">Draft word count: counting…</p>
+      <p class="intro">Five steps, applied the same way to every item. Placeholder text — replace with your own method.</p>
+      <div class="note"><b>How to read this page.</b> The narrative is the project. The lockers beneath it hold the working evidence — questions, findings-in-progress, and draft recommendations — and the Data page holds every figure at full size with its table.</div>
+      <div class="chapters">
+        <div class="chapter"><h3>Chapter 1 — Origins</h3><p>The National School Lunch Program was established by the National School Lunch Act of 1946 (Public Law 79-396), signed June 4, 1946. Its stated purpose was twofold: "as a measure of national security, to safeguard the health and well-being of the Nation's children and to encourage the domestic consumption of nutritious agricultural commodities." Both halves of that sentence still shape how money moves — nutrition and farm policy were fused at birth. <i>(Draft opening — verify quotations against the statute before submission.)</i></p></div>
+        <div class="chapter"><h3>Chapter 2 — Mechanics</h3><p>Placeholder: how reimbursement rates, eligibility categories (free / reduced-price / paid), and state administration turn a federal appropriation into per-student amounts that differ by state. This chapter sets up Figure 1.</p></div>
+        <div class="chapter"><h3>Chapter 3 — What the data show</h3><p>Placeholder: the interpretation of Figures 1–3, written only after assets/data.csv is loaded and the data-quality panel has been read. Claims here must cite the figure and the table, not the chart image alone.</p>
+        <figure style="margin-top:1rem"><div class="chart"><svg id="bars2" viewBox="0 0 400 300" role="img" aria-labelledby="bars2-t bars2-d"><title id="bars2-t">Bar chart of the per-unit value by item, embedded in the narrative</title><desc id="bars2-d">The same chart as on the Data page, placed where the argument uses it. Values are in the Compare table.</desc><text x="200" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#4a5668">Chart appears here when data is loaded</text></svg></div><figcaption><b>Figure 3, repeated in the narrative</b> at the point where it is interpreted. Full data on the Data page.</figcaption></figure></div>
+        <div class="chapter"><h3>Chapter 4 — Equity and blind spots</h3><p>Placeholder: what the per-student measure hides — participation, need outside the eligible count, and policy choices such as Community Eligibility Provision adoption. Cross-read with the Critique page.</p></div>
+        <div class="chapter"><h3>Chapter 5 — Conclusions</h3><p>Placeholder: what the evidence supports, graded Strong / Moderate / Limited, and what it cannot support. Recommendations live in the lockers below and are drafted only from this chapter's graded claims. The records behind the argument are on the <a href="#timeline">Timeline</a>.</p></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2 id="evidence" tabindex="-1">How evidence is graded</h2>
+      <dl class="defs">
+        <dt>Strong</dt><dd>Consistent results from multiple independent, peer-reviewed or official sources.</dd>
+        <dt>Moderate</dt><dd>Credible but limited sources, or results that vary by item or period.</dd>
+        <dt>Limited</dt><dd>A single source, or indirect evidence. Presented as a question for further work.</dd>
+      </dl>
+      <div class="row"><a class="btn" href="#sources">View sources</a></div>
+    </div>
+    <div class="wall">
+      <h2>Research lockers — one per category, shelves inside</h2>
+      <p style="background:var(--paper);display:inline-block;padding:.35rem .8rem;border:1px solid var(--rule);max-width:72ch">Three lockers, three kinds of work. <b>Locker 1 — Research Questions:</b> one shelf per question. <b>Locker 2 — Findings:</b> one shelf per finding, empty until the evidence is read. <b>Locker 3 — Recommendations:</b> one shelf per draft recommendation. A recommendation shelf is only as strong as the finding shelf it is drawn from in Locker 2.</p>
+      <div class="lkbar"><p class="status" id="lkprog">0 of 3 lockers opened</p><div class="lkctl"><button class="btn" type="button" id="openall">Open all lockers</button><button class="btn alt" type="button" id="closeall">Close all lockers</button></div><p class="kbnote">Keyboard: Tab to a locker door and press Enter to open it; press Enter again to close it. Escape also closes it and returns focus to the door.</p></div>
+      <div class="lockers"><div class="lk tall"><div class="in" id="lk1" role="region" aria-labelledby="lkt1" tabindex="-1">
+      <p class="in-hint">Shelf 1 of 3 — scroll down inside this locker to reach shelves 2 and 3.</p>
+      <div class="shelf"><span class="stag">Shelf 1 · Question 1</span><h3 id="lkt1">Where does the money go?</h3><p>How do total and per-student allocation vary across states, and how stable are those differences over time?</p></div>
+      <div class="shelf"><span class="stag">Shelf 2 · Question 2</span><h3>What explains the gaps?</h3><p>Do the differences follow enrollment, poverty concentration, participation, state policy choices — or the categories in the dataset itself?</p></div>
+      <div class="shelf"><span class="stag">Shelf 3 · Question 3</span><h3>What should change?</h3><p>Which reporting, formula, and monitoring changes does the evidence support, and how strongly?</p></div>
+      <button class="btn alt close" type="button">Close locker 1</button></div><button class="door" type="button" aria-expanded="false" aria-controls="lk1"><span class="vent" aria-hidden="true"></span><span><span class="no">Locker 1</span><span class="nm">Research Questions</span><span class="hint">Locked. Select to open — three questions inside, one per shelf.</span></span></button></div><div class="lk tall"><div class="in" id="lk2" role="region" aria-labelledby="lkt2" tabindex="-1">
+      <p class="in-hint">Shelf 1 of 3 — scroll down inside this locker to reach shelves 2 and 3.</p>
+      <div class="shelf"><span class="stag">Shelf 1 · Finding 1</span><span class="badge">Evidence needed</span><h3 id="lkt2">Pattern of allocation — no finding yet</h3><p>This shelf will hold what Figures 1–3 actually show about how per-student allocation differs across states — written only after the data-quality panel has been read.</p></div>
+      <div class="shelf"><span class="stag">Shelf 2 · Finding 2</span><span class="badge">Evidence needed</span><h3>Equity and outcomes — no finding yet</h3><p>This shelf will hold whether allocation patterns track need, and how access and participation relate to outcomes — graded before anything is claimed.</p></div>
+      <div class="shelf"><span class="stag">Shelf 3 · Finding 3</span><span class="badge">Evidence needed</span><h3>Administration — no finding yet</h3><p>This shelf will hold how reporting burden and state flexibility affect how the program is delivered.</p></div>
+      <button class="btn alt close" type="button">Close locker 2</button></div><button class="door" type="button" aria-expanded="false" aria-controls="lk2"><span class="vent" aria-hidden="true"></span><span><span class="no">Locker 2</span><span class="nm">Findings</span><span class="hint">Locked. Select to open — three finding shelves inside, all awaiting evidence.</span></span></button></div><div class="lk tall"><div class="in" id="lk3" role="region" aria-labelledby="lkt3" tabindex="-1">
+      <p class="in-hint">Shelf 1 of 3 — scroll down inside this locker to reach shelves 2 and 3.</p>
+      <div class="shelf"><span class="stag">Shelf 1 · Recommendation 1</span><span class="badge">Draft — pending evidence</span><h3 id="lkt3">Clarify formulas and reporting</h3><p>Draft, pending evidence: make allocation formulas and reporting requirements easier to read and compare across states.</p></div>
+      <div class="shelf"><span class="stag">Shelf 2 · Recommendation 2</span><span class="badge">Draft — pending evidence</span><h3>Strengthen monitoring</h3><p>Draft, pending evidence: expand state-level monitoring and equity review so gaps are found early.</p></div>
+      <div class="shelf"><span class="stag">Shelf 3 · Recommendation 3</span><span class="badge">Draft — pending evidence</span><h3>Tie policy to evidence</h3><p>Draft, pending evidence: align proposed policy changes with what the graded evidence supports — nothing stronger than the shelf it is drawn from.</p></div>
+      <button class="btn alt close" type="button">Close locker 3</button></div><button class="door" type="button" aria-expanded="false" aria-controls="lk3"><span class="vent" aria-hidden="true"></span><span><span class="no">Locker 3</span><span class="nm">Recommendations</span><span class="hint">Locked. Select to open — three draft recommendations inside, one per shelf.</span></span></button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / METHODOLOGY -->
+<section class="view" id="about" data-title="Methodology" aria-labelledby="h-about">
+  <div class="wrap">
+    <p class="label">About / Project Methodology</p>
+    <h1 id="h-about" tabindex="-1">How this project was made</h1>
+    <p class="lede">This page makes the project's process transparent: the decisions at each level of the work, who did what, what the data can and cannot show, and how generative AI was used. Placeholder structure — replace with your team's account, and cite the class readings that inform each decision.</p>
+
+    <div class="boardwrap">
+    <div class="sec">
+      <h2>Three levels of the project</h2>
+      <dl class="defs">
+        <dt>Sources</dt><dd>Placeholder: describe where the underlying material came from, why those sources were chosen over alternatives, and what was excluded at collection time. Cite the class readings that frame these choices.</dd>
+        <dt>Processing</dt><dd>Placeholder: describe how sources were cleaned, structured, and turned into the dataset the site uses (for this template: a CSV with the columns item, total, eligible, period, source, and a computed per-unit value). Name the tools, the transformations, and every judgment call — including how missing values are handled (shown as "Not reported," never silently dropped).</dd>
+        <dt>Presentation</dt><dd>Placeholder: describe how the processed data is presented and why — the tile grid (a spatial representation that keeps small items visible), the bar chart, the records-banner timeline, and the locker interaction — and the accessibility decisions documented on the Home page.</dd>
+      </dl>
+    </div>
+
+    <div class="sec">
+      <h2>Team</h2>
+      <div class="cols">
+        <div><h3>Project Lead &amp; Narrative — [name]</h3><p>Placeholder bio: background, and primary responsibilities — research questions, historical policy archives, the five-chapter narrative, team milestones.</p></div>
+        <div><h3>Web Architect — [name]</h3><p>Placeholder bio: background, and primary responsibilities — the scrapbook UI, locker and tray interactions, and WCAG accessibility.</p></div>
+        <div><h3>Data Quality &amp; Normalization — [name]</h3><p>Placeholder bio: background, and primary responsibilities — extracting and cleaning the source tables, per-student normalization, and the data critique. Note: the comparison draft named individuals in these roles; those names were not carried over, because they could not be verified as the actual team.</p></div>
+        <div><h3>Data Visualization — [name]</h3><p>Placeholder bio: background, and primary responsibilities — Figures 1–3, the tile grid and charts, and keeping every figure matched to its table.</p></div>
+        <div><h3>Research &amp; Bibliography — [name]</h3><p>Placeholder bio: background, and primary responsibilities — source research, the annotated bibliography, and verifying every timeline record against its source before it is added.</p></div>
+        <div><h3>Design &amp; Accessibility — [name]</h3><p>Placeholder bio: background, and primary responsibilities — the scrapbook design system, the WCAG contrast audit, and keyboard and screen-reader testing.</p></div>
+      </div>
+    </div>
+
+    </div>
+    <div class="sec">
+      <h2>Precedent examined — Drone Wars</h2>
+      <p>Before building, the team examined <a href="https://dronewars.github.io/">Drone Wars</a>, a prior UCLA introductory Digital Humanities final project (Fall 2018, directed by Dr. Ashley Sanders Garcia and Craig Messner). It is a data-driven narrative about the U.S. drone campaign in Afghanistan, Pakistan, Somalia, and Yemen, built from Bureau of Investigative Journalism datasets, and it is one of the past DH 101 final projects the course itself points students to as an example.</p>
+      <p>Three structural choices in this site refer back to it. First, the project is organised narrative-first, with data visualisations enfolded into an argument rather than presented as a gallery. Second, the methodology above accounts for the work in three levels — sources, processing, presentation — the same three-layer accounting Drone Wars used on its <a href="https://dronewars.github.io/resources/">Resources page</a>. Third, following that Resources page, this site places its <a href="#sources">Bibliography</a> last: in the navigation, in the Contents list, in the Continue links, and in the document itself, so the complete list of works cited closes the project.</p>
+      <p>Two things were deliberately not followed. Drone Wars was built with Mobirise, a drag-and-drop website builder; this course prohibits builder tools, so this site is hand-coded HTML, CSS, and JavaScript instead. And none of Drone Wars’ data, text, or team is reused here — which matters, because research for this reference identified the unnamed roster in the comparison draft evaluated during this build: its four names are members of the Drone Wars team, carried over without attribution. They were rejected as this team’s roster at the time because they could not be verified as the actual team; they are now positively identified as someone else’s.</p>
+    </div>
+
+    <div class="sec">
+      <h2>GenAI use disclosure</h2>
+      <p>This compiled site was produced with Muse (Meta AI) across both of its source drafts: the template build (code, design system, generated placeholder photographs) and a comparison draft produced by a different generator, whose information architecture — separate Narrative, Data, Critique, and Methodology pages, a chaptered narrative, and a real source list — was evaluated and partially adopted. What was <i>not</i> adopted: the comparison draft's state-level figures and named team roster, because neither could be verified. A second comparison draft was merged in build v3: its category-organised locker bank (one locker each for questions, findings, and recommendations), its banner details panel, its sticky-note question board, and its bibliography export were adopted as structures. Its embedded 51-state dataset and statistics were <i>not</i> adopted — they could not be verified, and the draft contradicts itself (Utah is $472 per student in its narrative prose and $745.26 in its own embedded data) — and its named team roster was again left out. All adopted content was checked against the rubric, the acceptance tests re-run after every merge step, and placeholder text is labelled wherever the team's own work must replace it. No AI-generated text is presented as a research finding. Build v4 (design only, also with Muse) gave the plainer pages their own treatments — the Critique as a chalkboard, the Methodology levels and team as a cork bulletin board — and rebuilt the Timeline banners as varsity championship pennants with a scoreboard header and collegiate type (Graduate and Oswald, loaded from Google Fonts). Build v5 rebuilt the banners against a reference photo of a real gym banner wall supplied by the team: true pennant points, uniform royal blue, white trim, and a centered school-line / record-line / year / title stack; the wall header was renamed "Timeline — Home of the National School Lunch Program." The reference photo was used as design reference only and is not reproduced on the site. Build v6 audited the palette with the WCAG contrast formula (every text pair passes AA; the undefined --tomato citation color was fixed to the audited red, and the strip-plot dots moved from pink to royal so data graphics use data colors, not scrapbook accents), rebuilt the locker doors and shelves with enamel shading, metal shelf bars, and category stickers, and turned the Timeline into a sideways-scrolling wall with scroll-snap, buttons, and a focusable scroll region. Two dead or duplicated decorations were removed: the unused starburst rule and the second gingham strip. Build v7 was a wording pass over every button and control label: the timeline buttons became Past / Present, locker controls became Open all / Close all to match the Close buttons on the doors, and UI jargon ("detail drawer", "swipe") was replaced with plain professional wording. Build v8 reordered the site so the Bibliography is the final page — navigation, Contents, Continue links, and document order — following the precedent of Drone Wars (Fall 2018, dronewars.github.io), which is now cited on the Bibliography page and discussed in a dedicated Methodology section; that research also positively identified the comparison draft’s roster as four members of the Drone Wars team, copied without attribution. Build v9 added ten timeline event templates; removed the gingham trim that calm mode incorrectly added, the favicon, and the locker stickers; removed the shelves’ “Answered by / Slot / Drawn from” callouts; made open lockers start on shelf 1 with internal scrolling; smoothed the door animation (longer ease, backface hidden, content fade); flattened the generic blue gradients on the locker doors and scoreboard after an audit for common AI design elements; and unified the browns into one walnut family (frames and baseboard #7A4522, cork field deepened from #B0824A to #AC743F), with the full palette re-measured — every text pair still passes WCAG AA. Build v10 expanded the Team section to six role slots, matching the team’s actual size of six people (names remain placeholders until the team supplies them), gave the three new team cards their own pins and tilts on the bulletin board, and re-checked the palette against the project moodboard (a Y2K back-to-school scrapbook board: saturated royal blue, grass green, hot pink, red gingham, cream, mustard) — the palette was judged to mesh, with two balance fixes: the Home headline’s pale pink shadow was saturated to the board’s hot pink, and the grass green, previously present only in small accents, was documented in the palette card and given a visible role in the team pins. Build v11 reset the palette at the team’s direction: chalk green lightened and saturated (#263F33 → #1E7040), walnut warmed (#6B4126 → #7A4522, cork field to #AC743F), mustard made more golden (#FFD94D → #FFC61A), and grass brightened (#2E7D32 → #27994B, decorative only); royal and banner blue were kept unchanged. All text pairs were re-measured after the reset and still pass WCAG AA (chalk text 5.3:1, ink on golden mustard 10.3:1). Build v12 rebuilt the Bibliography page as a full cafeteria menu (masthead, ruled course headings, dotted leaders, inner frame) and reformatted every entry as an MLA Works Cited citation with a hanging indent, followed by its annotation. Verification during that pass corrected two inherited errors: the CRS report is cited in its current version (Billings, “USDA’s Latest Update to Nutrition Standards for School Meals,” updated May 31, 2024), and the JAMA link resolves to Kinderknecht et al., JAMA 2020 — a study of the Healthy, Hunger-Free Kids Act and dietary quality — not a JAMA Pediatrics study of universal meals as an earlier draft described it. The GAO citation omits its publication date because GAO’s page returned “file not found” to the project’s browser checks and the date could not be verified from the source. Build v13 centered the width-limited presentation panels as blocks in the page column — the source menu and the callout notes — and centered the Bibliography controls (export and filter) over the menu; text inside the panels stays left-aligned, and the full-width panels (chalkboard, bulletin board, locker wall, scoreboard) were already spanning the column. Build v14 centered each page’s opening block on screen — the kicker label, heading, and introduction on every view, including the Home hero text and its buttons; the page column itself was already centered in the viewport. Body copy, tables, figures, and the interiors of the themed surfaces stay left-aligned for readability. Build v15 moved Timeline before Data in the navigation, the Home Contents, the Continue-link flow, and the meta description; the Timeline section already preceded the Data section in the document itself, so the reading order is now Narrative, Timeline, Data, Critique, Methodology, Bibliography. Build v16 was a professional-wording pass: the “Calm mode” toggle was renamed “Plain view” (internal class and storage key unchanged, so saved settings carry over) and the Accessibility notes now describe it; the Contents description of the Data page was corrected (tile grid, distribution strip plot, bar chart, sortable table — an earlier description said “trend frame”); and references to pages by superseded names (“Sources page,” “Compare page”) now say Bibliography and Data, including the bar chart’s screen-reader description. Build v17 cleaned up the Narrative page, which had accumulated two competing narrative scaffolds: the Beginning / Middle / End grid was removed (its guidance paragraph moved to the top of the narrative, its embedded Figure 3 moved into Chapter 3, and its Timeline cross-reference folded into Chapter 5), “How to read this page” became a standalone note instead of a grid cell, the five chapters now run as one stacked sequence, the evidence-grading definitions moved ahead of the lockers they govern, and the locker controls (progress, Open all / Close all, keyboard note) moved from the hero into the locker wall, with the lockers they control. Build v18, at the team’s direction, gave the lockers and the white boxes on their wall a uniform die-cut sticker treatment — white keyline ring, rounded corners, hard offset shadow, a slight alternating tilt, and one gold star sticker per locker — reversing the build v9 removal of the earlier, messier door stickers; the wall behind the lockers changed from cork texture to a light blue-gray block wall (#D9E4EF) like a painted school hallway, keeping the walnut baseboard. Build v19 removed the gold star stickers from the lockers’ top corners and widened the locker control bar to span the full width of the wall, level with the locker row: progress at the left, Open all / Close all beside it, and the keyboard note at the right. Build v20 removed the control bar’s background box altogether at the team’s direction: the controls now stack directly on the wall — the progress counter (its own ochre status box) above the Open all / Close all buttons, and the keyboard note underneath as its own small paper box. Build v21 made the locker doors toggle on Enter, like a double click: Enter on a closed door opens the locker (focus moves inside, landing on Shelf 1 as before), and Enter again — focus now on the locker region — closes it and returns focus to the door; the door’s click handler toggles as well, and Escape and the Close buttons are unchanged. The keyboard note on the wall now describes the toggle. Build v22 fixed banner focus visibility: all eleven Timeline banners were already keyboard-focusable (tabindex, button role, Enter/Space handlers), but their focus outline sits on the pennant element itself, whose clip-path clips the outline away, so tabbing through the wall showed no visible focus. The focus indicator now also appears on each banner’s un-clipped frame — an outline and glow on the list item whenever the banner inside it has keyboard focus. Build v23 returned the locker interiors to flat white (the ruled notebook-paper background and inset shadow were removed for readability) and changed the locker wall’s frame — top and bottom borders and the baseboard — from walnut brown to dark navy blue, matching the locker frames and doors; the chalkboard and bulletin board frames remain walnut. Build v24 made the banner details fully blind-accessible: the banners carry aria-controls pointing at the details panel, the panel is a labelled region, opening a banner moves focus to the panel’s heading so a screen reader reads the record details immediately, and Close details (or Escape inside the panel) returns focus to the banner that opened it. Build v25 removed the “Palette, audited for this build” card from the Methodology bulletin board at the team’s direction; the board now holds the Three Levels and Team sections only. No colours or contrast properties changed — only the on-page audit documentation was removed. Build v26 replaced the Home tray photograph: the AI-generated placeholder was replaced with a real photograph of a Mesa Public Schools lunch tray published by the U.S. Department of Agriculture’s Food and Nutrition Service on its “School Meals Trays, Many Ways” page (public domain as a U.S. federal government work; credited in the tray caption). The five tray navigation hotspots were re-measured and re-aligned to the new photograph’s compartments, and two labels changed to match its contents — the Bibliography hotspot now sits on the salad (this tray has no carrots) and the Method hotspot on the whole apple. The Methodology placeholder photograph (assets/photo.jpg) remains AI-generated and is still labelled as such.</p>
+    </div>
+
+    <div class="sec">
+      <h2>Data critique</h2>
+      <p>The full, revised data critique — inclusions, limits, and ontology — has its own page: <a href="#critique">Data Critique</a>. In brief: the dataset counts what its sources chose to record, divided into items, totals, and eligible counts; it can show differences in the per-unit measure and cannot show quality, experience, or anyone outside the eligible count.</p>
+    </div>
+
+    <div class="sec">
+      <h2>Site facts, counted from this page</h2>
+      <p id="facts">Counting…</p>
+    </div>
+
+    <div class="sec">
+      <h2>Completion checklist</h2>
+      <ul>
+        <li>Site name, header label, and footer label</li>
+        <li>Hero description and the one-sentence central argument</li>
+        <li>Both placeholder photographs (and their captions and credits)</li>
+        <li>Timeline records — each with a reviewed source — replacing the EXAMPLE banners</li>
+        <li><code>assets/data.csv</code> with real, documented data</li>
+        <li>The narrative: 2,000–3,000 words of your team's prose, figures enfolded</li>
+        <li>Locker contents: real questions, evidence-backed findings, graded recommendations</li>
+        <li>Source menu: real entries with 2–3 sentence annotations</li>
+        <li>Team bios, methodology reasoning with class citations, data critique revision, acknowledgments</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>Acknowledgments</h2>
+      <p>Placeholder: thank the people who helped — instructors, librarians, archivists, classmates, and anyone who gave feedback or data help — by name and contribution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CRITIQUE -->
+<section class="view" id="critique" data-title="Data Critique" aria-labelledby="h-critique">
+  <div class="wrap">
+    <p class="label">Data Critique</p>
+    <h1 id="h-critique" tabindex="-1">Ontology, inclusions, and blind spots</h1>
+    <p class="lede">A revised critique of the comparison dataset: what it contains, what it can illuminate, what it cannot, and the ideological effects of how its sources divided the world into data. Placeholder structure with the framing worked out — the team revises this against the real dataset before submission.</p>
+    <div class="sec chalkboard"><p class="chalk-head">&#9998; On the board: what this dataset can — and cannot — say</p>
+      <h2>What is included</h2>
+      <p>One row per item (state) with a total allocation, an eligible-student count, a reporting period, and a named source, from which a per-student value is computed. Every figure on the Data page derives from these five columns and nothing else — which is precisely the limitation the rest of this page examines.</p>
+      <p class="chalk-eq">per-student = total &divide; eligible &mdash; but &ne; quality, &ne; need, &ne; experience</p>
+      <h2 style="margin-top:2rem">What it can illuminate</h2>
+      <p>Differences in the per-student measure across states, the shape of their distribution (Figure 2), outliers worth individual review, and — once multiple periods are loaded — change over time. It can also show where reporting itself is uneven: the data-quality panel counts what is missing.</p>
+      <h2 style="margin-top:2rem">What it cannot show</h2>
+      <p>Meal quality, student experience, participation among the eligible, need among the ineligible, and causes. A gap in the per-student measure is a question, not a verdict — the narrative is required to treat it that way.</p>
+      <h2 style="margin-top:2rem">Ontology and ideological effects</h2>
+      <p>Dividing the program into "allocations," "eligible students," and "per-student values" adopts the administering agencies' own categories. That choice makes states commensurable and ranks them, while rendering invisible everything the categories exclude: children just above the eligibility line, districts that feed everyone under universal-meals policies, and the agricultural half of the program's founding purpose. A revised critique must name whose categories these are, what they flatten, and what a dataset built from different categories would make visible instead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="view" id="sources" data-title="Bibliography" aria-labelledby="h-sources">
+  <div class="wrap">
+    <p class="label">Bibliography</p>
+    <h1 id="h-sources" tabindex="-1">Source menu</h1>
+    <p class="lede">Every claim on this site should trace to an item on this menu. Entries are real sources, annotated with what each one supports; the JAMA entry is flagged where its annotation still awaits the team’s own reading. Citations follow MLA Works Cited style, each entry followed by its annotation. Following the precedent of Drone Wars, the earlier UCLA Digital Humanities project examined for this build (see Methodology), the bibliography is the final page of this site — the complete list of works cited, closing the project.</p>
+    <p><button class="btn alt" type="button" id="expbib">Export bibliography (CSV)</button></p>
+    <p><label for="srcfilter"><b>Filter the menu:</b></label> <input id="srcfilter" type="search" placeholder="Type to filter entries" style="font:inherit;padding:.45rem .6rem;border:2px solid var(--ink);border-radius:8px;min-width:min(320px,80%)"></p>
+    <div class="menu">
+      <div class="mh"><span class="over">Works Cited · MLA Style</span><h2>Sources Consulted</h2><p>Federal School Lunch Audit — an annotated bibliography, presented as the cafeteria menu. Every claim on this site is served from this list.</p></div>
+      <h3>Official history and program data</h3>
+      <div class="dish"><p class="cite">Food and Nutrition Service. “The National School Lunch Program: Background and Development.” <i>Food and Nutrition Service</i>, U.S. Department of Agriculture, <a href="https://www.fns.usda.gov/nslp/program-history">www.fns.usda.gov/nslp/program-history</a>. Accessed 6 Nov. 2026.</p><i aria-hidden="true"></i><span>Web page</span></div><p class="desc">The program’s official history; supports the 1946 and 1966 timeline records and the statutory framing in Chapter 1.</p>
+      <div class="dish"><p class="cite">Food and Nutrition Service. “Child Nutrition Tables.” <i>Food and Nutrition Service</i>, U.S. Department of Agriculture, <a href="https://www.fns.usda.gov/pd/child-nutrition-tables">www.fns.usda.gov/pd/child-nutrition-tables</a>. Accessed 6 Nov. 2026.</p><i aria-hidden="true"></i><span>Data release</span></div><p class="desc">The published state-level program data from which a dataset like this project’s is built; the first place to verify any allocation figure before it enters assets/data.csv.</p>
+      <h3>Reports and legislative summaries</h3>
+      <div class="dish"><p class="cite">Billings, Kara Clifford. “USDA’s Latest Update to Nutrition Standards for School Meals.” <i>Congressional Research Service</i>, 31 May 2024, CRS Report R47522, <a href="https://sgp.fas.org/crs/misc/R47522.pdf">sgp.fas.org/crs/misc/R47522.pdf</a>.</p><i aria-hidden="true"></i><span>Report, PDF</span></div><p class="desc">The current version (updated 31 May 2024) of the Congressional Research Service report on the meal-pattern rules — earlier versions carried a different title. Supports the 2010 and 2024 timeline records and the methodology page’s account of how meal-pattern rules changed.</p>
+      <div class="dish"><p class="cite">U.S. Government Accountability Office. <i>School Meals Programs: USDA Has Reported Taking Actions to Reduce Improper Payments</i>. GAO-20-209, <a href="https://www.gao.gov/products/gao-20-209">www.gao.gov/products/gao-20-209</a>. Accessed 6 Nov. 2026.</p><i aria-hidden="true"></i><span>Report</span></div><p class="desc">Federal oversight perspective on program administration and payment accuracy; context for the Administration finding and a check on purely statistical readings of the data. The citation omits the publication date deliberately: GAO’s page returned “file not found” to this project’s browser checks in November 2026, so the date could not be verified from the source — confirm it from the report itself before submission rather than guessing.</p>
+      <div class="dish"><p class="cite">“Child Nutrition Programs: Meal Patterns Consistent With the 2020-2025 Dietary Guidelines for Americans.” <i>Federal Register</i>, vol. 89, 25 Apr. 2024, p. 31962, Document No. 2024-08639, <a href="https://www.federalregister.gov/documents/2024/04/25/2024-08639/child-nutrition-programs-meal-patterns-consistent-with-the-2020-2025-dietary-guidelines-for-americans">www.federalregister.gov/documents/2024/04/25/2024-08639</a>.</p><i aria-hidden="true"></i><span>Final rule, 2024</span></div><p class="desc">Federal Register, April 25, 2024 (89 Fed. Reg. 31962). The primary text behind the 2024 timeline record; cited directly rather than through summaries.</p>
+      <h3>Peer-reviewed research</h3>
+      <div class="dish"><p class="cite">Kinderknecht, Kelsey, et al. “Association of the Healthy, Hunger-Free Kids Act With Dietary Quality Among Children in the US National School Lunch Program.” <i>JAMA</i>, vol. 324, no. 4, 2020, pp. 359–368, <a href="https://jamanetwork.com/journals/jamapediatrics/fullarticle/2768807">doi:10.1001/jama.2020.9517</a>.</p><i aria-hidden="true"></i><span>Journal article</span></div><p class="desc">Peer-reviewed study of how the Healthy, Hunger-Free Kids Act relates to dietary quality among children in the National School Lunch Program. Bibliographic details verified from the article page in November 2026: it is a <i>JAMA</i> article (the JAMA Pediatrics link redirects to JAMA), not a study of universal free meals as an earlier draft of this bibliography described it. The team must still read the article itself and base any findings claim on its text — an annotation may only describe scholarship the team has used.</p>
+      <h3>Project precedent</h3>
+      <div class="dish"><p class="cite">Yen, Leia, et al. <i>Drone Wars</i>. UCLA Digital Humanities, Fall 2018, <a href="https://dronewars.github.io/">dronewars.github.io</a>. Accessed 6 Nov. 2026.</p><i aria-hidden="true"></i><span>Project site</span></div><p class="desc">A data-driven narrative on U.S. drone campaigns in Afghanistan, Pakistan, Somalia, and Yemen, built by UCLA students from Bureau of Investigative Journalism datasets for an introductory Digital Humanities course (Fall 2018, directed by Dr. Ashley Sanders Garcia and Craig Messner). Examined as this project’s structural precedent — narrative first, a three-level methodology accounting, and a Resources page closing with its complete works cited — not as a source on school lunch policy. Its <a href="https://dronewars.github.io/resources/">Resources page</a> is where that structure can be inspected.</p>
+      <h3>Coming to the menu</h3>
+      <div class="soon">
+      <div class="dish"><b>Policy briefs</b><i aria-hidden="true"></i><span>Pending</span></div><p class="desc">Not yet reviewed. Add only after reading the original.</p><div class="dish"><b>Audit references</b><i aria-hidden="true"></i><span>Pending</span></div><p class="desc">Prior findings on program administration and reporting. Add only after reading the original.</p>
+      </div>
+      <p class="fine">Confirm each item against the original source before publishing. Do not add a reference that was not reviewed.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site"><div class="wrap"><span>Federal School Lunch Audit. Compiled build v26 — see Methodology for provenance.</span><span>Draft for discussion · Compiled build v26 — audited against the course rubric</span></div></footer>
+
+<script>
+(function(){
+  var views=[].slice.call(document.querySelectorAll('.view')),
+      links=[].slice.call(document.querySelectorAll('nav[aria-label="Primary"] a')),first=true;
+  function route(){
+    var id=decodeURIComponent((location.hash||'#home').slice(1)),el=document.getElementById(id),
+        v=views.filter(function(x){return x.id===id})[0]||(el&&el.closest('.view'))||views[0];
+    views.forEach(function(x){x.classList.toggle('on',x===v)});
+    links.forEach(function(a){a.getAttribute('href')==='#'+v.id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
+    document.title=(v.id==='home'?'':v.dataset.title+' | ')+'Federal School Lunch Audit';
+    var h=v.querySelector('h1');
+    if(el&&el!==v&&el!==h&&el!==document.getElementById('main')){el.scrollIntoView();el.focus({preventScroll:true})}
+    else if(!first){window.scrollTo(0,0);if(h)h.focus({preventScroll:true})}
+    first=false;
+  }
+  addEventListener('hashchange',route);route();
+
+  var csv={timeline:'date,event,category,source,notes\n',
+           data:'item,total,eligible,period,source\nXX,,,,\n'};
+  document.querySelectorAll('[data-csv]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.csv,a=document.createElement('a');
+      a.href=URL.createObjectURL(new Blob([csv[k]],{type:'text/csv'}));a.download=(k==='data'?'data':'timeline')+'-template.csv';
+      document.body.appendChild(a);a.click();a.remove();
+    });
+  });
+
+  /* tile grid: [item, column, row] — state codes, used when states are the items compared */
+  var T='AK,0,0 ME,10,0 VT,9,1 NH,10,1 WA,0,2 ID,1,2 MT,2,2 ND,3,2 MN,4,2 IL,5,2 WI,6,2 MI,7,2 NY,8,2 RI,9,2 MA,10,2 OR,0,3 NV,1,3 WY,2,3 SD,3,3 IA,4,3 IN,5,3 OH,6,3 PA,7,3 NJ,8,3 CT,9,3 CA,0,4 UT,1,4 CO,2,4 NE,3,4 MO,4,4 KY,5,4 WV,6,4 VA,7,4 MD,8,4 DE,9,4 AZ,1,5 NM,2,5 KS,3,5 AR,4,5 TN,5,5 NC,6,5 SC,7,5 DC,8,5 OK,3,6 LA,4,6 MS,5,6 AL,6,6 GA,7,6 HI,0,7 TX,3,7 FL,8,7'.split(' ').map(function(s){s=s.split(',');return{id:s[0],c:+s[1],r:+s[2]}}),
+      ramp=['#e9eef4','#c4d3e4','#8fabc9','#4f739f','#1b365d'],svg=document.getElementById('tiles');
+  function draw(fills){
+    var h='';T.forEach(function(t){
+      var f=fills&&fills[t.id]!==undefined?fills[t.id]:null,bg=f===null?'#ffffff':ramp[f],tx=f!==null&&f>2?'#ffffff':'#17212e';
+      h+='<g><rect x="'+(t.c*56+2)+'" y="'+(t.r*54+2)+'" width="52" height="50" fill="'+bg+'" stroke="#7d8ca1"/><text x="'+(t.c*56+28)+'" y="'+(t.r*54+32)+'" text-anchor="middle" fill="'+tx+'">'+t.id+'</text></g>';
+    });
+    svg.innerHTML='<title id="tiles-t">Tile grid of the per-unit value by item</title><desc id="tiles-d">Each item is one square tile. Values are listed in the table below the figure.</desc>'+h;
+  }
+  draw(null);
+
+  fetch('assets/data.csv').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(txt){
+    var lines=txt.trim().split(/\r?\n/);if(lines.length<2)return;
+    var rows=lines.slice(1).map(function(l){var p=l.split(',');return{s:(p[0]||'').trim().toUpperCase(),a:parseFloat(p[1]),e:parseFloat(p[2]),p:(p[3]||'').trim(),src:(p[4]||'').trim()}}).filter(function(r){return r.s});
+    if(!rows.length)return;
+    rows.forEach(function(r){r.v=(isFinite(r.a)&&isFinite(r.e)&&r.e!==0)?r.a/r.e:NaN});
+    var vals=rows.map(function(r){return r.v}).filter(isFinite).sort(function(a,b){return a-b});
+    if(!vals.length)return;
+    var cut=[1,2,3,4].map(function(i){return vals[Math.min(vals.length-1,Math.floor(i*vals.length/5))]}),fills={};
+    rows.forEach(function(r){if(isFinite(r.v)){var b=0;cut.forEach(function(c){if(r.v>=c)b++});fills[r.s]=b}});
+    draw(fills);
+    var fmt=function(n){return isFinite(n)?n.toLocaleString('en-US',{maximumFractionDigits:2}):'Not reported'};
+    document.getElementById('tbody').innerHTML=rows.sort(function(a,b){return a.s<b.s?-1:1}).map(function(r){
+      return '<tr><th scope="row">'+r.s+'</th><td class="num">'+fmt(r.a)+'</td><td class="num">'+fmt(r.e)+'</td><td class="num">'+fmt(r.v)+'</td><td>'+(r.p||'To be documented')+(r.src?', '+r.src:'')+'</td></tr>'}).join('');
+    document.getElementById('legend').innerHTML='Lower'+ramp.map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'Higher<span style="margin-left:.75rem"><i style="background:#fff"></i> No data</span>';
+    document.getElementById('status').textContent='Data loaded: '+rows.length+' items';
+    window.__launchRows=rows;window.dispatchEvent(new CustomEvent('launchdata',{detail:rows}));
+    var ok=rows.filter(function(r){return isFinite(r.v)}),miss=rows.length-ok.length,
+        vs=ok.map(function(r){return r.v}).sort(function(a,b){return a-b}),
+        med=vs.length?(vs.length%2?vs[Math.floor(vs.length/2)]:(vs[vs.length/2-1]+vs[vs.length/2])/2):NaN,
+        dq=document.getElementById('dq');
+    if(dq&&rows.length){dq.hidden=false;dq.innerHTML='<b>Data quality, computed from the loaded file:</b> '+rows.length+' items &middot; '+ok.length+' with a computable per-unit value &middot; '+miss+' not reported &middot; median per-unit '+fmt(med)+' &middot; range '+fmt(vs[0])+' to '+fmt(vs[vs.length-1])+'. Missing values are counted here, never silently dropped.';}
+    var dl=document.getElementById('dlcomp');
+    if(dl){dl.disabled=false;dl.addEventListener('click',function(){
+      var out='item,total,eligible,per_unit,period,source\n'+rows.slice().sort(function(a,b){return a.s<b.s?-1:1}).map(function(r){return [r.s,isFinite(r.a)?r.a:'',isFinite(r.e)?r.e:'',isFinite(r.v)?r.v.toFixed(4):'',r.p,r.src].join(',')}).join('\n'),
+          a=document.createElement('a');a.href=URL.createObjectURL(new Blob([out],{type:'text/csv'}));a.download='computed-table.csv';document.body.appendChild(a);a.click();a.remove();});}
+    var br=rows.filter(function(r){return isFinite(r.v)}).sort(function(a,b){return b.v-a.v}).slice(0,10),mx=br.length?br[0].v:0,bh='';
+    br.forEach(function(r,i){var w=mx?Math.round(r.v/mx*230):0,y=18+i*28;
+      bh+='<text x="8" y="'+(y+13)+'" font-family="system-ui,sans-serif" font-size="11" fill="#17212e">'+r.s+'</text><rect x="44" y="'+y+'" width="'+w+'" height="16" fill="#2456c8"/><text x="'+(50+w)+'" y="'+(y+13)+'" font-family="system-ui,sans-serif" font-size="11" fill="#4a5668">'+fmt(r.v)+'</text>';});
+    if(bh)document.getElementById('bars').innerHTML='<title id="bars-t">Bar chart of the per-unit value by item</title><desc id="bars-d">One horizontal bar per item. The table below holds the same values.</desc>'+bh;
+  }).catch(function(){});
+
+  var lks=[].slice.call(document.querySelectorAll('.lk'));
+  function setLk(lk,open,focus){
+    var door=lk.querySelector('.door'),inn=lk.querySelector('.in');
+    lk.classList.toggle('open',open);door.setAttribute('aria-expanded',open?'true':'false');door.inert=open;
+    if(open&&inn)inn.scrollTop=0;
+    if(focus){
+      if(open&&inn){inn.focus({preventScroll:true});inn.scrollTop=0;}
+      else door.focus();
+    }
+  }
+  lks.forEach(function(lk){
+    lk.querySelector('.door').addEventListener('click',function(){setLk(lk,!lk.classList.contains('open'),true)});
+    lk.querySelector('.close').addEventListener('click',function(){setLk(lk,false,true)});
+    lk.addEventListener('keydown',function(e){if(!lk.classList.contains('open'))return;if(e.key==='Escape')setLk(lk,false,true);else if(e.key==='Enter'&&e.target===lk.querySelector('.in')){e.preventDefault();setLk(lk,false,true);}});
+  });
+  var prog=document.getElementById('lkprog');
+  function saveProg(){var open=lks.filter(function(l){return l.classList.contains('open')}).map(function(l){return l.querySelector('.in').id});
+    try{sessionStorage.setItem('launch-lockers',JSON.stringify(open))}catch(e){}
+    if(prog)prog.textContent=open.length+' of '+lks.length+' lockers opened';}
+  lks.forEach(function(lk){lk.addEventListener('click',function(){setTimeout(saveProg,0)});lk.addEventListener('keydown',function(){setTimeout(saveProg,0)});});
+  try{JSON.parse(sessionStorage.getItem('launch-lockers')||'[]').forEach(function(id){var el=document.getElementById(id);if(el)setLk(el.closest('.lk'),true,false);});}catch(e){}
+  saveProg();
+  document.getElementById('openall').addEventListener('click',function(){lks.forEach(function(l){setLk(l,true,false)})});
+  document.getElementById('closeall').addEventListener('click',function(){lks.forEach(function(l){setLk(l,false,false)});saveProg();});
+})();
+</script>
+<script>
+/* Round 1 additions, consolidated in round 2: strip plot + narrative-embedded bars,
+   rendered from the rows published by the main loader (single fetch). */
+(function(){
+  function fmt(n){return isFinite(n)?n.toLocaleString('en-US',{maximumFractionDigits:2}):'Not reported'}
+  function render(rows){
+    rows.forEach(function(r){r.v=(isFinite(r.a)&&isFinite(r.e)&&r.e!==0)?r.a/r.e:NaN});
+    var ok=rows.filter(function(r){return isFinite(r.v)});if(!ok.length)return;
+    var mx=Math.max.apply(null,ok.map(function(r){return r.v})),mn=Math.min.apply(null,ok.map(function(r){return r.v})),sh='';
+    ok.forEach(function(r,i){var x=mx>mn?40+(r.v-mn)/(mx-mn)*320:200,y=36+(i%12)*20,ly=(i%2===0)?y-10:y+16;
+      sh+='<circle cx="'+x+'" cy="'+y+'" r="6" fill="#2456c8" fill-opacity="0.75" stroke="#17212e"/><text x="'+(x+10)+'" y="'+ly+'" font-family="system-ui,sans-serif" font-size="10" fill="#17212e">'+r.s+'</text>';});
+    var strip=document.getElementById('strip');
+    if(strip)strip.innerHTML='<title id="strip-t">Distribution of per-unit values</title><desc id="strip-d">Each dot is one item, positioned by its per-unit value. The table below holds the same values.</desc><line x1="40" y1="282" x2="370" y2="282" stroke="#17212e"/><text x="40" y="297" font-family="system-ui,sans-serif" font-size="10" fill="#4a5668">Low: '+fmt(mn)+'</text><text x="370" y="297" text-anchor="end" font-family="system-ui,sans-serif" font-size="10" fill="#4a5668">High: '+fmt(mx)+'</text>'+sh;
+    var br=ok.slice().sort(function(a,b){return b.v-a.v}).slice(0,10),bh='';
+    br.forEach(function(r,i){var w=mx?Math.round(r.v/mx*230):0,y=18+i*28;
+      bh+='<text x="8" y="'+(y+13)+'" font-family="system-ui,sans-serif" font-size="11" fill="#17212e">'+r.s+'</text><rect x="44" y="'+y+'" width="'+w+'" height="16" fill="#2456c8"/><text x="'+(50+w)+'" y="'+(y+13)+'" font-family="system-ui,sans-serif" font-size="11" fill="#4a5668">'+fmt(r.v)+'</text>';});
+    var b2=document.getElementById('bars2');
+    if(b2&&bh)b2.innerHTML='<title id="bars2-t">Bar chart of the per-unit value by item, embedded in the narrative</title><desc id="bars2-d">The same chart as Figure 3 on the Data page. Values are in the Data table.</desc>'+bh;
+  }
+  if(window.__launchRows)render(window.__launchRows);
+  window.addEventListener('launchdata',function(e){render(e.detail)});
+})();
+</script>
+<script>
+(function(){var map={home:['findings','Narrative'],findings:['timeline','Timeline'],timeline:['compare','Data'],compare:['critique','Critique'],critique:['about','Methodology'],about:['sources','Bibliography'],sources:['home','Home']};
+Object.keys(map).forEach(function(id){var v=document.getElementById(id);if(!v)return;var w=v.querySelector('.wrap');if(!w)return;
+var p=document.createElement('p');p.style.marginTop='3rem';p.className='contlink';
+p.innerHTML='<a class="btn alt" href="#'+map[id][0]+'">Continue: '+map[id][1]+' \u2192</a>';w.appendChild(p);});})();
+</script>
+<script>
+(function(){var inp=document.getElementById('srcfilter');if(!inp)return;
+inp.addEventListener('input',function(){var q=inp.value.trim().toLowerCase();
+document.querySelectorAll('.menu .dish').forEach(function(d){var desc=d.nextElementSibling,
+  hit=!q||d.textContent.toLowerCase().indexOf(q)>-1||(desc&&desc.textContent.toLowerCase().indexOf(q)>-1);
+  d.style.display=hit?'':'none';if(desc&&desc.classList.contains('desc'))desc.style.display=hit?'':'none';});});})();
+</script>
+<script>
+(function(){
+  /* word counter for the narrative scaffold */
+  var wc=document.getElementById('wc');
+  if(wc){var sec=wc.closest('.sec'),n=(sec?sec.textContent:'').trim().split(/\s+/).length;
+    wc.textContent='Draft word count (narrative section, template text): about '+n+' words. Target for the finished narrative: 2,000\u20133,000 words.';}
+  /* site facts */
+  var f=document.getElementById('facts');
+  if(f){f.textContent='This site currently contains '+document.querySelectorAll('.view').length+' views, '+
+    document.querySelectorAll('.lk').length+' lockers holding '+document.querySelectorAll('.shelf').length+' shelves, '+document.querySelectorAll('.bn').length+' timeline banners, '+
+    document.querySelectorAll('svg[id]').length+' data figures, and '+document.querySelectorAll('.menu .dish').length+
+    ' source-menu entries \u2014 counted live from the document, so this line stays true as the team edits.';}
+  /* calm mode */
+  var b=document.getElementById('calm');
+  function apply(on){document.documentElement.classList.toggle('calm',on);if(b)b.setAttribute('aria-pressed',on?'true':'false');
+    try{localStorage.setItem('launch-calm',on?'1':'0')}catch(e){}}
+  if(b){var start=false;try{start=localStorage.getItem('launch-calm')==='1'}catch(e){}
+    if(start)apply(true);
+    b.addEventListener('click',function(){apply(!document.documentElement.classList.contains('calm'));});}
+})();
+</script>
+<script>
+(function(){function fmt(n){return isFinite(n)?n.toLocaleString('en-US',{maximumFractionDigits:2}):'Not reported'}
+function paint(rows){var tb=document.getElementById('tbody');if(!tb)return;
+  tb.innerHTML=rows.map(function(r){return '<tr><th scope="row">'+r.s+'</th><td class="num">'+fmt(r.a)+'</td><td class="num">'+fmt(r.e)+'</td><td class="num">'+fmt(r.v)+'</td><td>'+(r.p||'To be documented')+(r.src?', '+r.src:'')+'</td></tr>'}).join('');}
+var bi=document.getElementById('sortItem'),bv=document.getElementById('sortVal');
+if(bi)bi.addEventListener('click',function(){var r=(window.__launchRows||[]).slice();if(r.length)paint(r.sort(function(a,b){return a.s<b.s?-1:1}));});
+if(bv)bv.addEventListener('click',function(){var r=(window.__launchRows||[]).slice();if(r.length)paint(r.sort(function(a,b){return (isFinite(b.v)?b.v:-Infinity)-(isFinite(a.v)?a.v:-Infinity)}));});})();
+</script>
+<script>
+(function(){
+  var arch={
+    ev01:{t:'Event template 1 — placeholder',b:'Template banner 1 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev02:{t:'Event template 2 — placeholder',b:'Template banner 2 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev03:{t:'Event template 3 — placeholder',b:'Template banner 3 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev04:{t:'Event template 4 — placeholder',b:'Template banner 4 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev05:{t:'Event template 5 — placeholder',b:'Template banner 5 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev06:{t:'Event template 6 — placeholder',b:'Template banner 6 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev07:{t:'Event template 7 — placeholder',b:'Template banner 7 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev08:{t:'Event template 8 — placeholder',b:'Template banner 8 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev09:{t:'Event template 9 — placeholder',b:'Template banner 9 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    ev10:{t:'Event template 10 — placeholder',b:'Template banner 10 of 10. Replace it with a real, sourced milestone: what changed, who acted, and what it meant for school lunch funding — written from the source, not from memory.',c:'Source required before publishing — see Bibliography.'},
+    open:{t:'Open — the next record',b:'Reserved for the next milestone. A banner is added here only when its source is recorded on the Bibliography page; undated or unsourced entries stay in this slot, not on a dated banner.',c:'Source required before adding.'}
+  };
+  var panel=document.getElementById('banner-detail'),tt=document.getElementById('bd-title'),
+      bb=document.getElementById('bd-body'),cc=document.getElementById('bd-cite'),lastBn=null;
+  function open(key,bn){
+    document.querySelectorAll('.bn').forEach(function(x){x.setAttribute('aria-expanded','false')});
+    if(!arch[key])return;
+    lastBn=bn||null;
+    tt.textContent=arch[key].t;bb.textContent=arch[key].b;cc.textContent=arch[key].c;
+    panel.hidden=false;if(bn)bn.setAttribute('aria-expanded','true');
+    tt.focus({preventScroll:true});
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  document.querySelectorAll('.bn').forEach(function(bn){
+    bn.addEventListener('click',function(){open(bn.dataset.banner,bn)});
+    bn.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(bn.dataset.banner,bn)}});
+  });
+  function closePanel(){panel.hidden=true;
+    document.querySelectorAll('.bn').forEach(function(x){x.setAttribute('aria-expanded','false')});
+    if(lastBn)lastBn.focus();}
+  var cl=document.getElementById('bd-close');
+  if(cl)cl.addEventListener('click',closePanel);
+  panel.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel();});
+  var eb=document.getElementById('expbib');
+  if(eb)eb.addEventListener('click',function(){
+    var rows=[['citation','type','annotation']];
+    document.querySelectorAll('.menu .dish').forEach(function(d){
+      var c=d.querySelector('.cite'),bb=d.querySelector('b'),t=c?c.textContent.trim():(bb?bb.textContent:d.textContent.trim()),
+          ty=(d.querySelector('span')||{}).textContent||'',
+          nx=d.nextElementSibling,
+          an=(nx&&nx.classList.contains('desc'))?nx.textContent:'';
+      rows.push([t,ty,an]);});
+    var csv=rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n'),
+        a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='bibliography.csv';
+    document.body.appendChild(a);a.click();a.remove();});
+})();
+</script>
+<script>
+(function(){
+  var strip=document.querySelector('.banners'),prev=document.getElementById('bn-prev'),next=document.getElementById('bn-next');
+  if(!strip||!prev||!next)return;
+  function step(dir){strip.scrollBy({left:dir*332,behavior:'smooth'});}
+  function sync(){prev.disabled=strip.scrollLeft<=4;next.disabled=strip.scrollLeft+strip.clientWidth>=strip.scrollWidth-4;}
+  prev.addEventListener('click',function(){step(-1);});
+  next.addEventListener('click',function(){step(1);});
+  strip.addEventListener('scroll',function(){window.requestAnimationFrame(sync);});
+  window.addEventListener('resize',sync);sync();
+})();
+</script>
+</body>
+</html>
